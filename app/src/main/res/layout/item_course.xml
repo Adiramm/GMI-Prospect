@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    One course card in the course list: icon | name + duration + optional
+    "Limited seats" chip | chevron. Text and chip visibility are set in
+    CourseAdapter.CourseHolder.bind().
+-->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/screen_padding"
+    android:layout_marginTop="6dp"
+    android:layout_marginEnd="@dimen/screen_padding"
+    android:layout_marginBottom="6dp"
+    android:clickable="true"
+    android:focusable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageCourseIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="top"
+            android:background="@drawable/bg_icon_circle"
+            android:backgroundTint="?attr/colorPrimaryContainer"
+            android:importantForAccessibility="no"
+            android:padding="12dp"
+            app:tint="?attr/colorOnPrimaryContainer"
+            tools:src="@drawable/ic_bolt" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textCourseName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.GMI.Title.Small"
+                tools:text="@string/course_mechatronics_name" />
+
+            <!-- Duration with a small clock icon -->
+            <TextView
+                android:id="@+id/textCourseDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:drawablePadding="6dp"
+                android:gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.GMI.Label"
+                app:drawableStartCompat="@drawable/ic_schedule_small"
+                app:drawableTint="?attr/colorOnSurfaceVariant"
+                tools:text="@string/duration_3_years" />
+
+            <!-- Red pop badge, only shown for courses with limited seats -->
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipLimitedSeats"
+                style="@style/Widget.GMI.Chip.Badge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:text="@string/badge_limited_seats"
+                android:visibility="gone"
+                tools:visibility="visible" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_chevron_right"
+            app:tint="?attr/colorOnSurfaceVariant" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

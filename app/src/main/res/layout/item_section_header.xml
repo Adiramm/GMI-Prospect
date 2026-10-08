@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Small faculty header in the Diploma tab, e.g. "ELECTRICAL ENGINEERING". -->
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/textSectionHeader"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="@dimen/screen_padding"
+    android:paddingTop="@dimen/spacing_medium"
+    android:paddingEnd="@dimen/screen_padding"
+    android:paddingBottom="@dimen/spacing_small"
+    android:textAppearance="@style/TextAppearance.GMI.SectionHeader"
+    tools:text="@string/faculty_electrical" />

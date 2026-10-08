@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- First row of the ranked result list: headline (set in ResultAdapter) + subtitle. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/screen_padding"
+    android:paddingTop="@dimen/spacing_small"
+    android:paddingEnd="@dimen/screen_padding"
+    android:paddingBottom="@dimen/spacing_small">
+
+    <TextView
+        android:id="@+id/textResultHeadline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.GMI.Headline"
+        tools:text="You're eligible for 15 courses 🎉" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="@string/result_eligible_subtitle"
+        android:textAppearance="@style/TextAppearance.GMI.Body"
+        android:textColor="?attr/colorOnSurfaceVariant" />
+</LinearLayout>

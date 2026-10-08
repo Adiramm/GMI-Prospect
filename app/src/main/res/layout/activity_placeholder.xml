@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    TEMPORARY layout shared by screens that are not built yet (Courses,
+    Check Eligibility, About, Contact). Each one gets its own
+    activity_<screen>.xml in its own phase.
+    fitsSystemWindows pads the screen away from the status/navigation bars.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        style="@style/Widget.GMI.Toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize" />
+
+    <TextView
+        android:id="@+id/textPlaceholder"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="@dimen/spacing_large"
+        android:text="@string/placeholder_coming_soon"
+        android:textAppearance="@style/TextAppearance.GMI.Body"
+        android:textColor="?attr/colorOnSurfaceVariant" />
+</LinearLayout>

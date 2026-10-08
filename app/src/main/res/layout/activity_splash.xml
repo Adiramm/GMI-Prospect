@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Splash screen: full GMI gradient, white logo, greeting and a "Let's go" button.
+    fitsSystemWindows on the root pads the CONTENT away from the status and
+    navigation bars, while the root's gradient background still fills the
+    whole screen behind them. (It is on the root, not the ConstraintLayout,
+    because fitsSystemWindows replaces a view's own padding.)
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient_blue"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.SplashActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/spacing_large">
+
+        <ImageView
+            android:id="@+id/imageLogo"
+            android:layout_width="160dp"
+            android:layout_height="113dp"
+            android:contentDescription="@string/cd_gmi_logo"
+            android:src="@drawable/gmi_logo_light"
+            app:layout_constraintBottom_toTopOf="@id/textGreeting"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.42"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/textGreeting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="@string/splash_greeting"
+            android:textAppearance="@style/TextAppearance.GMI.Display"
+            android:textColor="@color/on_header"
+            app:layout_constraintBottom_toTopOf="@id/textSubtitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageLogo" />
+
+        <TextView
+            android:id="@+id/textSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:gravity="center"
+            android:text="@string/splash_subtitle"
+            android:textAppearance="@style/TextAppearance.GMI.Body"
+            android:textColor="@color/on_header_variant"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toTopOf="@id/buttonGo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textGreeting" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonGo"
+            style="@style/Widget.GMI.Button.OnGradient"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/splash_cta"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

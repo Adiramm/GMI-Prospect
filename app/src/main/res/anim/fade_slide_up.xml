@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Entrance animation: fade in while sliding up a little.
+    fromYDelta is a % of the view's own height. Used by SplashActivity and
+    HomeActivity with a different start offset per view (staggered effect).
+-->
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="550"
+    android:interpolator="@android:anim/decelerate_interpolator">
+    <alpha
+        android:fromAlpha="0"
+        android:toAlpha="1" />
+    <translate
+        android:fromYDelta="25%"
+        android:toYDelta="0" />
+</set>

@@ -1,0 +1,302 @@
+<resources>
+    <!--
+        ENGLISH strings (default). Every string here must also exist in
+        values-ms/strings.xml (Bahasa Melayu).
+        Reminder: escape apostrophes as \' and double quotes as \" .
+    -->
+
+    <!-- ========== App & common ========== -->
+    <string name="app_name">GMI Prospect</string>
+    <!-- Language of THIS strings file. HomeActivity reads it to know the current language. -->
+    <string name="lang_code">en</string>
+    <!-- Label on the language toggle = the language you switch TO -->
+    <string name="lang_toggle_label">BM</string>
+
+    <string name="action_next">Next</string>
+    <string name="action_back">Back</string>
+    <string name="action_home">Home</string>
+    <string name="action_submit">Submit</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_ok">OK</string>
+    <string name="action_apply">Apply</string>
+    <string name="action_close">Close</string>
+
+    <!-- Content descriptions (read by screen readers) -->
+    <string name="cd_navigate_up">Navigate up</string>
+    <string name="cd_gmi_logo">GMI logo</string>
+    <string name="cd_switch_to_dark">Switch to dark mode</string>
+    <string name="cd_switch_to_light">Switch to light mode</string>
+    <string name="cd_toggle_language">Switch to Bahasa Melayu</string>
+
+    <!-- ========== Splash ========== -->
+    <string name="splash_greeting">Hey there 👋</string>
+    <string name="splash_subtitle">Let\'s find your path at GMI</string>
+    <string name="splash_cta">Let\'s go →</string>
+
+    <!-- ========== Home ========== -->
+    <string name="home_greeting">Welcome to GMI</string>
+    <string name="home_subtitle">What would you like to explore today?</string>
+    <string name="home_section_title">Explore</string>
+    <string name="home_courses_sub">Diploma, GAPP &amp; GUFP</string>
+    <string name="home_eligibility_sub">Based on your SPM results</string>
+    <string name="home_about_sub">Who we are</string>
+    <string name="home_contact_sub">Call, email or visit</string>
+    <string name="home_footer" translatable="false">German-Malaysian Institute · Kajang</string>
+
+    <!-- ========== Screen titles (Home cards + toolbars) ========== -->
+    <string name="title_courses">Courses</string>
+    <string name="title_eligibility">Check Eligibility</string>
+    <string name="title_about">About Us</string>
+    <string name="title_contact">Contact Us</string>
+
+    <!-- Placeholder screens (replaced in later phases) -->
+    <string name="placeholder_coming_soon">Coming soon — this screen is built in a later phase.</string>
+
+    <!-- ========== Course list & detail ========== -->
+    <string name="title_course_detail">Course Details</string>
+    <string name="badge_limited_seats">Limited seats</string>
+    <string name="detail_label_level">Level</string>
+    <string name="detail_label_faculty">Faculty</string>
+    <string name="detail_label_duration">Duration</string>
+    <string name="detail_about_title">About this course</string>
+    <string name="detail_requirements_title">Entry requirements (SPM)</string>
+    <string name="detail_medical_title">Medical note</string>
+    <string name="detail_medical_note">All diplomas require applicants to be free from colour blindness and to pass a medical check. This app does not check this — GMI confirms it during admission.</string>
+    <string name="detail_check_eligibility">Am I eligible?</string>
+
+    <!-- Entry requirement lines, built from RuleType. %1$s = subject name -->
+    <string name="req_pass_in">Pass (E or better) in %1$s</string>
+    <string name="req_credit_in">Credit (C or better) in %1$s</string>
+    <string name="req_credit_science_technical">Credit (C or better) in at least 1 Science / Technical / Vocational subject</string>
+    <string name="req_credit_other">Credit (C or better) in at least 1 other subject</string>
+
+    <!-- ========== Grade input ========== -->
+    <string name="title_quiz">Interest Quiz</string>
+    <string name="grades_title">Your SPM grades</string>
+    <string name="grades_subtitle">Pick your grade for each subject. Add any other subjects you took — extra credits can open more courses.</string>
+    <string name="grades_add_subject">Add subject</string>
+    <string name="grades_row_error">Pick a grade</string>
+    <string name="grades_sheet_title">Add a subject</string>
+    <string name="grades_sheet_science">Science / Technical / Vocational</string>
+    <string name="grades_sheet_other">Other subjects</string>
+    <string name="grades_sheet_all_added">You have added every subject.</string>
+    <string name="grades_error_duplicate">%1$s is already on the list.</string>
+    <plurals name="grades_error_missing">
+        <item quantity="one">Pick a grade for %d more subject</item>
+        <item quantity="other">Pick a grade for %d more subjects</item>
+    </plurals>
+    <string name="cd_remove_subject">Remove %1$s</string>
+
+    <!-- Missing requirements (EligibilityChecker → Result screen). %1$s = subject name -->
+    <string name="missing_pass_in">Needs a pass (E or better) in %1$s</string>
+    <string name="missing_credit_in">Needs a credit (C or better) in %1$s</string>
+    <string name="missing_credit_science_technical">Needs a credit (C or better) in at least 1 Science / Technical / Vocational subject</string>
+    <string name="missing_credit_other">Needs a credit (C or better) in at least 1 other subject</string>
+
+    <!-- ========== Quiz ========== -->
+    <string name="quiz_progress">Question %1$d of %2$d</string>
+    <string name="quiz_hint">Pick the answer that sounds most like you.</string>
+    <string name="quiz_see_results">See results</string>
+
+    <!-- ========== Result ========== -->
+    <string name="title_result">Your Results</string>
+    <plurals name="result_eligible_headline">
+        <item quantity="one">You\'re eligible for %d course 🎉</item>
+        <item quantity="other">You\'re eligible for %d courses 🎉</item>
+    </plurals>
+    <string name="result_eligible_subtitle">Ranked by your quiz answers — your best match is at the top.</string>
+    <string name="result_best_match">⭐ Best match</string>
+    <!-- %1$s = level, %2$s = duration -->
+    <string name="result_course_meta">%1$s · %2$s</string>
+    <string name="result_not_eligible_title">Not quite yet — and that\'s okay</string>
+    <string name="result_not_eligible_body">With these grades you don\'t meet the entry requirements yet. Here is what each programme still needs. Check your grades again, or talk to us about your options.</string>
+    <string name="result_retake">Retake</string>
+    <string name="cd_apply_for">Apply for %1$s</string>
+
+    <!-- ========== Admission form ========== -->
+    <string name="title_admission">Admission Form</string>
+    <string name="form_summary_title">Your application</string>
+    <string name="form_summary_grades">SPM grades</string>
+    <string name="form_details_title">Your details</string>
+    <string name="form_name">Full name (as in IC)</string>
+    <string name="form_ic">IC number</string>
+    <string name="form_ic_helper">12 digits, e.g. 070312-10-1234</string>
+    <string name="form_phone">Phone number</string>
+    <string name="form_phone_helper">e.g. 012-345 6789</string>
+    <string name="form_email">Email</string>
+    <string name="form_address">Home address</string>
+
+    <string name="error_name">Enter your full name (letters only)</string>
+    <string name="error_ic_digits">IC number must have 12 digits</string>
+    <string name="error_ic_date">The first 6 digits must be a valid birth date (YYMMDD)</string>
+    <string name="error_phone">Enter a valid Malaysian phone number</string>
+    <string name="error_email">Enter a valid email address</string>
+    <string name="error_address">Enter your full address</string>
+
+    <string name="draft_restored">Draft restored</string>
+    <string name="draft_clear">Clear</string>
+    <string name="form_sent_hint">Your application is ready in your email app — remember to press Send.</string>
+    <string name="form_no_email_app">No email app found. Copy your application and send it to %1$s.</string>
+    <string name="action_copy">Copy</string>
+    <string name="form_copied">Application copied</string>
+
+    <!-- Application email. %1$s = course, %2$s = applicant name -->
+    <string name="email_subject">GMI Application – %1$s – %2$s</string>
+    <string name="email_grade_line" translatable="false">- %1$s: %2$s</string>
+    <!-- %1$s course, %2$s level · duration, %3$s name, %4$s IC, %5$s phone, %6$s email, %7$s address, %8$s grade lines -->
+    <string name="email_body">Dear GMI Admissions,\n\nI would like to apply for the following programme.\n\nCourse: %1$s\nLevel: %2$s\n\nFull name: %3$s\nIC number: %4$s\nPhone: %5$s\nEmail: %6$s\nAddress: %7$s\n\nSPM grades:\n%8$s\n\nSent from the GMI Prospect app.</string>
+
+    <!-- ========== Levels & faculties ========== -->
+    <string name="level_diploma">Diploma</string>
+    <string name="level_gapp" translatable="false">GAPP</string>
+    <string name="level_gufp" translatable="false">GUFP</string>
+
+    <string name="faculty_electrical">Electrical Engineering</string>
+    <string name="faculty_mechanical">Mechanical Engineering</string>
+    <string name="faculty_computer">Computer &amp; Information</string>
+    <string name="faculty_pre_university">Pre-University</string>
+
+    <!-- ========== Durations ========== -->
+    <string name="duration_3_years">3 years</string>
+    <string name="duration_gapp">20 months at GMI + 6 months in Germany</string>
+    <string name="duration_gufp">1 year (3 trimesters)</string>
+
+    <!-- ========== Courses: Diploma - Electrical Engineering ========== -->
+    <string name="course_mechatronics_name">Diploma of Mechatronics Engineering Technology</string>
+    <!-- TODO verify -->
+    <string name="course_mechatronics_desc">Combines mechanical, electrical and control engineering to build and maintain automated machines and robotic systems.</string>
+
+    <string name="course_instrumentation_control_name">Diploma of Engineering Technology (Instrumentation &amp; Control)</string>
+    <!-- TODO verify -->
+    <string name="course_instrumentation_control_desc">Focuses on measuring, monitoring and controlling industrial processes using sensors, controllers and automation systems.</string>
+
+    <string name="course_electronics_computer_name">Diploma of Electronics Engineering Technology (Computer)</string>
+    <!-- TODO verify -->
+    <string name="course_electronics_computer_desc">Covers electronic circuits, embedded systems and computer hardware, preparing you to build and troubleshoot computer-based devices.</string>
+
+    <string name="course_autotronics_name">Diploma in Autotronics Engineering Technology</string>
+    <!-- TODO verify -->
+    <string name="course_autotronics_desc">Covers the electrical and electronic systems in modern vehicles, from engine management to diagnostics.</string>
+
+    <string name="course_sustainable_energy_name">Diploma in Engineering Technology (Sustainable Energy &amp; Power Distribution)</string>
+    <!-- TODO verify -->
+    <string name="course_sustainable_energy_desc">Covers power generation, distribution and renewable energy systems, with a focus on efficient and sustainable electricity supply.</string>
+
+    <string name="course_industrial_communication_name">Industrial Communication System</string>
+    <!-- TODO verify -->
+    <string name="course_industrial_communication_desc">Covers the networks and communication systems that connect machines and controllers in modern factories.</string>
+
+    <string name="course_facilities_automation_name">Facilities &amp; Building Automation</string>
+    <!-- TODO verify -->
+    <string name="course_facilities_automation_desc">Covers the automation of building systems such as lighting, air-conditioning, security and energy management.</string>
+
+    <!-- ========== Courses: Diploma - Mechanical Engineering ========== -->
+    <string name="course_industrial_design_name">Diploma in Engineering Technology (Industrial Design)</string>
+    <!-- TODO verify -->
+    <string name="course_industrial_design_desc">Combines engineering and design skills to create products that are functional, safe and attractive.</string>
+
+    <string name="course_industrial_quality_name">Diploma in Industrial Quality Engineering Technology</string>
+    <!-- TODO verify -->
+    <string name="course_industrial_quality_desc">Focuses on quality control, inspection and measurement methods that keep manufactured products up to standard.</string>
+
+    <string name="course_product_design_name">Diploma in Innovative Product Design Engineering Technology</string>
+    <!-- TODO verify -->
+    <string name="course_product_design_desc">Takes you from idea to prototype, using CAD, materials knowledge and engineering principles to design new products.</string>
+
+    <string name="course_cnc_precision_name">Diploma of Mechanical Engineering Technology (CNC Precision)</string>
+    <!-- TODO verify -->
+    <string name="course_cnc_precision_desc">Trains you to program and operate CNC machines to produce high-precision mechanical parts.</string>
+
+    <string name="course_manufacturing_name">Diploma of Mechanical Engineering Technology (Manufacturing)</string>
+    <!-- TODO verify -->
+    <string name="course_manufacturing_desc">Covers modern manufacturing processes, machining and production planning used in industry.</string>
+
+    <string name="course_tool_die_name">Tool &amp; Die Technology</string>
+    <!-- TODO verify -->
+    <string name="course_tool_die_desc">Covers the design and making of tools, dies and moulds used in mass production.</string>
+
+    <!-- ========== Courses: Diploma - Computer & Information ========== -->
+    <string name="course_software_engineering_name">Diploma in Software Engineering</string>
+    <string name="course_software_engineering_desc">Develops the competencies needed across the software development process, including software testing and quality.</string>
+
+    <string name="course_creative_multimedia_name">Diploma in Creative Multimedia</string>
+    <string name="course_creative_multimedia_desc">Covers the full 2D/3D digital art pipeline — drawing, modelling, texturing, animation and rendering — using industry-standard tools and a recording studio.</string>
+
+    <!-- ========== Courses: Pre-university ========== -->
+    <string name="course_gapp_name">German A-Level Preparatory Programme (GAPP)</string>
+    <string name="course_gapp_desc">20 months at GMI followed by 6 months of intensive German (B2 / TestDAF) in Germany, then entry to a German University of Applied Sciences.</string>
+
+    <string name="course_gufp_name">GMI–UTP Foundation Programme (GUFP)</string>
+    <string name="course_gufp_desc">A one-year foundation programme (3 trimesters) that prepares you for degree studies at Universiti Teknologi PETRONAS.</string>
+
+    <!-- ========== SPM subjects: core ========== -->
+    <string name="subject_bm">Bahasa Melayu</string>
+    <string name="subject_english">English</string>
+    <string name="subject_math">Mathematics</string>
+    <string name="subject_sejarah">Sejarah</string>
+
+    <!-- ========== SPM subjects: science / technical / vocational ========== -->
+    <string name="subject_physics">Physics</string>
+    <string name="subject_chemistry">Chemistry</string>
+    <string name="subject_biology">Biology</string>
+    <string name="subject_science">Science</string>
+    <string name="subject_add_math">Additional Mathematics</string>
+    <string name="subject_computer_science">Computer Science</string>
+    <string name="subject_engineering_drawing">Engineering Drawing</string>
+    <string name="subject_mech_eng_studies">Mechanical Engineering Studies</string>
+    <string name="subject_elec_eng_studies">Electrical &amp; Electronic Engineering Studies</string>
+    <string name="subject_civil_eng_studies">Civil Engineering Studies</string>
+    <string name="subject_invention">Invention</string>
+    <string name="subject_graphic_comm_tech">Graphic Communication Technology</string>
+    <string name="subject_agriculture">Agriculture</string>
+
+    <!-- ========== SPM subjects: other ========== -->
+    <string name="subject_pendidikan_islam">Pendidikan Islam</string>
+    <string name="subject_pendidikan_moral">Pendidikan Moral</string>
+    <string name="subject_accounting">Accounting</string>
+    <string name="subject_economics">Economics</string>
+    <string name="subject_business">Business</string>
+    <string name="subject_geography">Geography</string>
+    <string name="subject_visual_arts">Visual Arts</string>
+    <string name="subject_english_literature">English Literature</string>
+    <string name="subject_chinese">Chinese Language</string>
+    <string name="subject_tamil">Tamil Language</string>
+    <string name="subject_arabic">Arabic</string>
+
+    <!-- ========== Interest quiz (answers in order: Electrical, Mechanical, Design, IT) ========== -->
+    <string name="quiz_q1">What sounds most fun?</string>
+    <string name="quiz_q1_a0">Building a circuit that lights up</string>
+    <string name="quiz_q1_a1">Taking apart an engine</string>
+    <string name="quiz_q1_a2">Sketching a cool product</string>
+    <string name="quiz_q1_a3">Coding a small game</string>
+
+    <string name="quiz_q2">Your ideal weekend project?</string>
+    <string name="quiz_q2_a0">Wiring smart lights at home</string>
+    <string name="quiz_q2_a1">Fixing your motorbike</string>
+    <string name="quiz_q2_a2">Designing a poster or 3D model</string>
+    <string name="quiz_q2_a3">Building an app or website</string>
+
+    <string name="quiz_q3">Which subject do you enjoy most?</string>
+    <string name="quiz_q3_a0">Physics</string>
+    <string name="quiz_q3_a1">Add Maths</string>
+    <string name="quiz_q3_a2">Visual Arts</string>
+    <string name="quiz_q3_a3">Computer Science</string>
+
+    <string name="quiz_q4">In a group project you usually…</string>
+    <string name="quiz_q4_a0">Make the gadget work</string>
+    <string name="quiz_q4_a1">Build the physical model</string>
+    <string name="quiz_q4_a2">Make it look good</string>
+    <string name="quiz_q4_a3">Handle the tech &amp; data</string>
+
+    <string name="quiz_q5">Which video would you click?</string>
+    <string name="quiz_q5_a0">\"How solar panels work\"</string>
+    <string name="quiz_q5_a1">\"Inside a Formula 1 engine\"</string>
+    <string name="quiz_q5_a2">\"Designing the iPhone\"</string>
+    <string name="quiz_q5_a3">\"How hackers break in\"</string>
+
+    <string name="quiz_q6">Dream workplace?</string>
+    <string name="quiz_q6_a0">Power plant or factory automation</string>
+    <string name="quiz_q6_a1">Car or aerospace plant</string>
+    <string name="quiz_q6_a2">Design studio</string>
+    <string name="quiz_q6_a3">Tech company</string>
+</resources>

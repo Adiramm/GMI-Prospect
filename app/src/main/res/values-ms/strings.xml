@@ -1,0 +1,293 @@
+<resources>
+    <!--
+        BAHASA MELAYU strings. Same names as values/strings.xml.
+        Course names are our own translations - team to check against the
+        official GMI BM names.
+    -->
+
+    <!-- ========== App & common ========== -->
+    <string name="app_name">GMI Prospect</string>
+    <string name="lang_code">ms</string>
+    <string name="lang_toggle_label">EN</string>
+
+    <string name="action_next">Seterusnya</string>
+    <string name="action_back">Kembali</string>
+    <string name="action_home">Laman Utama</string>
+    <string name="action_submit">Hantar</string>
+    <string name="action_cancel">Batal</string>
+    <string name="action_ok">OK</string>
+    <string name="action_apply">Mohon</string>
+    <string name="action_close">Tutup</string>
+
+    <!-- Content descriptions -->
+    <string name="cd_navigate_up">Kembali ke atas</string>
+    <string name="cd_gmi_logo">Logo GMI</string>
+    <string name="cd_switch_to_dark">Tukar ke mod gelap</string>
+    <string name="cd_switch_to_light">Tukar ke mod cerah</string>
+    <string name="cd_toggle_language">Tukar ke Bahasa Inggeris</string>
+
+    <!-- ========== Splash ========== -->
+    <string name="splash_greeting">Hai! 👋</string>
+    <string name="splash_subtitle">Jom cari laluan anda di GMI</string>
+    <string name="splash_cta">Jom mula →</string>
+
+    <!-- ========== Home ========== -->
+    <string name="home_greeting">Selamat datang ke GMI</string>
+    <string name="home_subtitle">Apa yang anda ingin terokai hari ini?</string>
+    <string name="home_section_title">Terokai</string>
+    <string name="home_courses_sub">Diploma, GAPP &amp; GUFP</string>
+    <string name="home_eligibility_sub">Berdasarkan keputusan SPM anda</string>
+    <string name="home_about_sub">Siapa kami</string>
+    <string name="home_contact_sub">Telefon, e-mel atau lawati</string>
+
+    <!-- ========== Tajuk skrin ========== -->
+    <string name="title_courses">Kursus</string>
+    <string name="title_eligibility">Semak Kelayakan</string>
+    <string name="title_about">Tentang Kami</string>
+    <string name="title_contact">Hubungi Kami</string>
+
+    <string name="placeholder_coming_soon">Akan datang — skrin ini akan dibina dalam fasa seterusnya.</string>
+
+    <!-- ========== Senarai & butiran kursus ========== -->
+    <string name="title_course_detail">Butiran Kursus</string>
+    <string name="badge_limited_seats">Tempat terhad</string>
+    <string name="detail_label_level">Peringkat</string>
+    <string name="detail_label_faculty">Fakulti</string>
+    <string name="detail_label_duration">Tempoh</string>
+    <string name="detail_about_title">Tentang kursus ini</string>
+    <string name="detail_requirements_title">Syarat kemasukan (SPM)</string>
+    <string name="detail_medical_title">Nota perubatan</string>
+    <string name="detail_medical_note">Semua diploma mensyaratkan pemohon tidak rabun warna dan lulus pemeriksaan perubatan. Aplikasi ini tidak menyemak perkara ini — GMI akan mengesahkannya semasa kemasukan.</string>
+    <string name="detail_check_eligibility">Adakah saya layak?</string>
+
+    <!-- Baris syarat kemasukan, dibina daripada RuleType. %1$s = nama subjek -->
+    <string name="req_pass_in">Lulus (E atau lebih baik) dalam %1$s</string>
+    <string name="req_credit_in">Kepujian (C atau lebih baik) dalam %1$s</string>
+    <string name="req_credit_science_technical">Kepujian (C atau lebih baik) dalam sekurang-kurangnya 1 subjek Sains / Teknikal / Vokasional</string>
+    <string name="req_credit_other">Kepujian (C atau lebih baik) dalam sekurang-kurangnya 1 subjek lain</string>
+
+    <!-- ========== Input gred ========== -->
+    <string name="title_quiz">Kuiz Minat</string>
+    <string name="grades_title">Gred SPM anda</string>
+    <string name="grades_subtitle">Pilih gred bagi setiap subjek. Tambah subjek lain yang anda ambil — kepujian tambahan boleh membuka lebih banyak kursus.</string>
+    <string name="grades_add_subject">Tambah subjek</string>
+    <string name="grades_row_error">Pilih gred</string>
+    <string name="grades_sheet_title">Tambah subjek</string>
+    <string name="grades_sheet_science">Sains / Teknikal / Vokasional</string>
+    <string name="grades_sheet_other">Subjek lain</string>
+    <string name="grades_sheet_all_added">Anda telah menambah semua subjek.</string>
+    <string name="grades_error_duplicate">%1$s sudah ada dalam senarai.</string>
+    <plurals name="grades_error_missing">
+        <item quantity="other">Pilih gred untuk %d subjek lagi</item>
+    </plurals>
+    <string name="cd_remove_subject">Buang %1$s</string>
+
+    <!-- Syarat yang belum dipenuhi (EligibilityChecker → skrin Keputusan). %1$s = nama subjek -->
+    <string name="missing_pass_in">Perlu lulus (E atau lebih baik) dalam %1$s</string>
+    <string name="missing_credit_in">Perlu kepujian (C atau lebih baik) dalam %1$s</string>
+    <string name="missing_credit_science_technical">Perlu kepujian (C atau lebih baik) dalam sekurang-kurangnya 1 subjek Sains / Teknikal / Vokasional</string>
+    <string name="missing_credit_other">Perlu kepujian (C atau lebih baik) dalam sekurang-kurangnya 1 subjek lain</string>
+
+    <!-- ========== Kuiz ========== -->
+    <string name="quiz_progress">Soalan %1$d daripada %2$d</string>
+    <string name="quiz_hint">Pilih jawapan yang paling menggambarkan diri anda.</string>
+    <string name="quiz_see_results">Lihat keputusan</string>
+
+    <!-- ========== Keputusan ========== -->
+    <string name="title_result">Keputusan Anda</string>
+    <plurals name="result_eligible_headline">
+        <item quantity="other">Anda layak untuk %d kursus 🎉</item>
+    </plurals>
+    <string name="result_eligible_subtitle">Disusun mengikut jawapan kuiz anda — padanan terbaik di atas sekali.</string>
+    <string name="result_best_match">⭐ Padanan terbaik</string>
+    <!-- %1$s = peringkat, %2$s = tempoh -->
+    <string name="result_course_meta">%1$s · %2$s</string>
+    <string name="result_not_eligible_title">Belum lagi — dan itu tidak mengapa</string>
+    <string name="result_not_eligible_body">Dengan gred ini anda belum memenuhi syarat kemasukan. Berikut ialah perkara yang masih diperlukan bagi setiap program. Semak semula gred anda, atau hubungi kami untuk pilihan lain.</string>
+    <string name="result_retake">Cuba semula</string>
+    <string name="cd_apply_for">Mohon untuk %1$s</string>
+
+    <!-- ========== Borang permohonan ========== -->
+    <string name="title_admission">Borang Permohonan</string>
+    <string name="form_summary_title">Permohonan anda</string>
+    <string name="form_summary_grades">Gred SPM</string>
+    <string name="form_details_title">Butiran anda</string>
+    <string name="form_name">Nama penuh (seperti dalam IC)</string>
+    <string name="form_ic">Nombor IC</string>
+    <string name="form_ic_helper">12 digit, cth. 070312-10-1234</string>
+    <string name="form_phone">Nombor telefon</string>
+    <string name="form_phone_helper">cth. 012-345 6789</string>
+    <string name="form_email">E-mel</string>
+    <string name="form_address">Alamat rumah</string>
+
+    <string name="error_name">Masukkan nama penuh anda (huruf sahaja)</string>
+    <string name="error_ic_digits">Nombor IC mesti mempunyai 12 digit</string>
+    <string name="error_ic_date">6 digit pertama mesti tarikh lahir yang sah (YYMMDD)</string>
+    <string name="error_phone">Masukkan nombor telefon Malaysia yang sah</string>
+    <string name="error_email">Masukkan alamat e-mel yang sah</string>
+    <string name="error_address">Masukkan alamat penuh anda</string>
+
+    <string name="draft_restored">Draf dipulihkan</string>
+    <string name="draft_clear">Padam</string>
+    <string name="form_sent_hint">Permohonan anda sedia dalam aplikasi e-mel — jangan lupa tekan Hantar.</string>
+    <string name="form_no_email_app">Tiada aplikasi e-mel ditemui. Salin permohonan anda dan hantar ke %1$s.</string>
+    <string name="action_copy">Salin</string>
+    <string name="form_copied">Permohonan disalin</string>
+
+    <!-- E-mel permohonan. %1$s = kursus, %2$s = nama pemohon -->
+    <string name="email_subject">Permohonan GMI – %1$s – %2$s</string>
+    <!-- %1$s kursus, %2$s peringkat · tempoh, %3$s nama, %4$s IC, %5$s telefon, %6$s e-mel, %7$s alamat, %8$s senarai gred -->
+    <string name="email_body">Kepada Bahagian Kemasukan GMI,\n\nSaya ingin memohon program berikut.\n\nKursus: %1$s\nPeringkat: %2$s\n\nNama penuh: %3$s\nNombor IC: %4$s\nTelefon: %5$s\nE-mel: %6$s\nAlamat: %7$s\n\nGred SPM:\n%8$s\n\nDihantar melalui aplikasi GMI Prospect.</string>
+
+    <!-- ========== Levels & faculties ========== -->
+    <string name="level_diploma">Diploma</string>
+
+    <string name="faculty_electrical">Kejuruteraan Elektrik</string>
+    <string name="faculty_mechanical">Kejuruteraan Mekanikal</string>
+    <string name="faculty_computer">Komputer &amp; Maklumat</string>
+    <string name="faculty_pre_university">Pra-Universiti</string>
+
+    <!-- ========== Durations ========== -->
+    <string name="duration_3_years">3 tahun</string>
+    <string name="duration_gapp">20 bulan di GMI + 6 bulan di Jerman</string>
+    <string name="duration_gufp">1 tahun (3 trimester)</string>
+
+    <!-- ========== Courses: Diploma - Electrical Engineering ========== -->
+    <string name="course_mechatronics_name">Diploma Teknologi Kejuruteraan Mekatronik</string>
+    <!-- TODO verify -->
+    <string name="course_mechatronics_desc">Menggabungkan kejuruteraan mekanikal, elektrik dan kawalan untuk membina serta menyelenggara mesin automatik dan sistem robotik.</string>
+
+    <string name="course_instrumentation_control_name">Diploma Teknologi Kejuruteraan (Instrumentasi &amp; Kawalan)</string>
+    <!-- TODO verify -->
+    <string name="course_instrumentation_control_desc">Memberi tumpuan kepada pengukuran, pemantauan dan kawalan proses industri menggunakan penderia, pengawal dan sistem automasi.</string>
+
+    <string name="course_electronics_computer_name">Diploma Teknologi Kejuruteraan Elektronik (Komputer)</string>
+    <!-- TODO verify -->
+    <string name="course_electronics_computer_desc">Merangkumi litar elektronik, sistem terbenam dan perkakasan komputer, menyediakan anda untuk membina dan membaiki peranti berasaskan komputer.</string>
+
+    <string name="course_autotronics_name">Diploma Teknologi Kejuruteraan Autotronik</string>
+    <!-- TODO verify -->
+    <string name="course_autotronics_desc">Merangkumi sistem elektrik dan elektronik dalam kenderaan moden, daripada pengurusan enjin hingga diagnostik.</string>
+
+    <string name="course_sustainable_energy_name">Diploma Teknologi Kejuruteraan (Tenaga Lestari &amp; Pengagihan Kuasa)</string>
+    <!-- TODO verify -->
+    <string name="course_sustainable_energy_desc">Merangkumi penjanaan kuasa, pengagihan dan sistem tenaga boleh baharu, dengan tumpuan kepada bekalan elektrik yang cekap dan lestari.</string>
+
+    <string name="course_industrial_communication_name">Sistem Komunikasi Industri</string>
+    <!-- TODO verify -->
+    <string name="course_industrial_communication_desc">Merangkumi rangkaian dan sistem komunikasi yang menghubungkan mesin dan pengawal di kilang moden.</string>
+
+    <string name="course_facilities_automation_name">Automasi Fasiliti &amp; Bangunan</string>
+    <!-- TODO verify -->
+    <string name="course_facilities_automation_desc">Merangkumi automasi sistem bangunan seperti pencahayaan, penyaman udara, keselamatan dan pengurusan tenaga.</string>
+
+    <!-- ========== Courses: Diploma - Mechanical Engineering ========== -->
+    <string name="course_industrial_design_name">Diploma Teknologi Kejuruteraan (Reka Bentuk Industri)</string>
+    <!-- TODO verify -->
+    <string name="course_industrial_design_desc">Menggabungkan kemahiran kejuruteraan dan reka bentuk untuk menghasilkan produk yang berfungsi, selamat dan menarik.</string>
+
+    <string name="course_industrial_quality_name">Diploma Teknologi Kejuruteraan Kualiti Industri</string>
+    <!-- TODO verify -->
+    <string name="course_industrial_quality_desc">Memberi tumpuan kepada kawalan kualiti, pemeriksaan dan kaedah pengukuran yang memastikan produk kilang memenuhi piawaian.</string>
+
+    <string name="course_product_design_name">Diploma Teknologi Kejuruteraan Reka Bentuk Produk Inovatif</string>
+    <!-- TODO verify -->
+    <string name="course_product_design_desc">Membawa anda daripada idea hingga prototaip, menggunakan CAD, pengetahuan bahan dan prinsip kejuruteraan untuk mereka produk baharu.</string>
+
+    <string name="course_cnc_precision_name">Diploma Teknologi Kejuruteraan Mekanikal (Kejituan CNC)</string>
+    <!-- TODO verify -->
+    <string name="course_cnc_precision_desc">Melatih anda memprogram dan mengendalikan mesin CNC untuk menghasilkan komponen mekanikal berketepatan tinggi.</string>
+
+    <string name="course_manufacturing_name">Diploma Teknologi Kejuruteraan Mekanikal (Pembuatan)</string>
+    <!-- TODO verify -->
+    <string name="course_manufacturing_desc">Merangkumi proses pembuatan moden, pemesinan dan perancangan pengeluaran yang digunakan dalam industri.</string>
+
+    <string name="course_tool_die_name">Teknologi Alat &amp; Acuan</string>
+    <!-- TODO verify -->
+    <string name="course_tool_die_desc">Merangkumi reka bentuk dan pembuatan alat, acuan tekan dan acuan yang digunakan dalam pengeluaran besar-besaran.</string>
+
+    <!-- ========== Courses: Diploma - Computer & Information ========== -->
+    <string name="course_software_engineering_name">Diploma Kejuruteraan Perisian</string>
+    <string name="course_software_engineering_desc">Membina kecekapan yang diperlukan sepanjang proses pembangunan perisian, termasuk pengujian dan kualiti perisian.</string>
+
+    <string name="course_creative_multimedia_name">Diploma Multimedia Kreatif</string>
+    <string name="course_creative_multimedia_desc">Merangkumi keseluruhan aliran kerja seni digital 2D/3D — lukisan, pemodelan, tekstur, animasi dan rendering — menggunakan perisian standard industri dan studio rakaman.</string>
+
+    <!-- ========== Courses: Pre-university ========== -->
+    <string name="course_gapp_name">Program Persediaan A-Level Jerman (GAPP)</string>
+    <string name="course_gapp_desc">20 bulan di GMI diikuti 6 bulan kursus intensif Bahasa Jerman (B2 / TestDAF) di Jerman, kemudian kemasukan ke Universiti Sains Gunaan di Jerman.</string>
+
+    <string name="course_gufp_name">Program Asasi GMI–UTP (GUFP)</string>
+    <string name="course_gufp_desc">Program asasi satu tahun (3 trimester) yang menyediakan anda untuk pengajian ijazah di Universiti Teknologi PETRONAS.</string>
+
+    <!-- ========== SPM subjects: core ========== -->
+    <string name="subject_bm">Bahasa Melayu</string>
+    <string name="subject_english">Bahasa Inggeris</string>
+    <string name="subject_math">Matematik</string>
+    <string name="subject_sejarah">Sejarah</string>
+
+    <!-- ========== SPM subjects: science / technical / vocational ========== -->
+    <string name="subject_physics">Fizik</string>
+    <string name="subject_chemistry">Kimia</string>
+    <string name="subject_biology">Biologi</string>
+    <string name="subject_science">Sains</string>
+    <string name="subject_add_math">Matematik Tambahan</string>
+    <string name="subject_computer_science">Sains Komputer</string>
+    <string name="subject_engineering_drawing">Lukisan Kejuruteraan</string>
+    <string name="subject_mech_eng_studies">Pengajian Kejuruteraan Mekanikal</string>
+    <string name="subject_elec_eng_studies">Pengajian Kejuruteraan Elektrik &amp; Elektronik</string>
+    <string name="subject_civil_eng_studies">Pengajian Kejuruteraan Awam</string>
+    <string name="subject_invention">Reka Cipta</string>
+    <string name="subject_graphic_comm_tech">Grafik Komunikasi Teknikal</string>
+    <string name="subject_agriculture">Pertanian</string>
+
+    <!-- ========== SPM subjects: other ========== -->
+    <string name="subject_pendidikan_islam">Pendidikan Islam</string>
+    <string name="subject_pendidikan_moral">Pendidikan Moral</string>
+    <string name="subject_accounting">Prinsip Perakaunan</string>
+    <string name="subject_economics">Ekonomi</string>
+    <string name="subject_business">Perniagaan</string>
+    <string name="subject_geography">Geografi</string>
+    <string name="subject_visual_arts">Pendidikan Seni Visual</string>
+    <string name="subject_english_literature">Kesusasteraan Inggeris</string>
+    <string name="subject_chinese">Bahasa Cina</string>
+    <string name="subject_tamil">Bahasa Tamil</string>
+    <string name="subject_arabic">Bahasa Arab</string>
+
+    <!-- ========== Kuiz minat (jawapan: Elektrik, Mekanikal, Reka Bentuk, IT) ========== -->
+    <string name="quiz_q1">Apa yang paling seronok bagi anda?</string>
+    <string name="quiz_q1_a0">Membina litar yang boleh menyala</string>
+    <string name="quiz_q1_a1">Membuka sebuah enjin</string>
+    <string name="quiz_q1_a2">Melakar produk yang menarik</string>
+    <string name="quiz_q1_a3">Mengekod permainan kecil</string>
+
+    <string name="quiz_q2">Projek hujung minggu idaman anda?</string>
+    <string name="quiz_q2_a0">Memasang lampu pintar di rumah</string>
+    <string name="quiz_q2_a1">Membaiki motosikal anda</string>
+    <string name="quiz_q2_a2">Mereka poster atau model 3D</string>
+    <string name="quiz_q2_a3">Membina aplikasi atau laman web</string>
+
+    <string name="quiz_q3">Subjek mana yang paling anda minati?</string>
+    <string name="quiz_q3_a0">Fizik</string>
+    <string name="quiz_q3_a1">Matematik Tambahan</string>
+    <string name="quiz_q3_a2">Seni Visual</string>
+    <string name="quiz_q3_a3">Sains Komputer</string>
+
+    <string name="quiz_q4">Dalam projek berkumpulan, anda biasanya…</string>
+    <string name="quiz_q4_a0">Memastikan gajet berfungsi</string>
+    <string name="quiz_q4_a1">Membina model fizikal</string>
+    <string name="quiz_q4_a2">Menjadikannya kelihatan cantik</string>
+    <string name="quiz_q4_a3">Menguruskan teknologi &amp; data</string>
+
+    <string name="quiz_q5">Video mana yang anda akan klik?</string>
+    <string name="quiz_q5_a0">\"Bagaimana panel solar berfungsi\"</string>
+    <string name="quiz_q5_a1">\"Di dalam enjin Formula 1\"</string>
+    <string name="quiz_q5_a2">\"Mereka bentuk iPhone\"</string>
+    <string name="quiz_q5_a3">\"Bagaimana penggodam menceroboh\"</string>
+
+    <string name="quiz_q6">Tempat kerja impian?</string>
+    <string name="quiz_q6_a0">Loji janakuasa atau automasi kilang</string>
+    <string name="quiz_q6_a1">Kilang kereta atau aeroangkasa</string>
+    <string name="quiz_q6_a2">Studio reka bentuk</string>
+    <string name="quiz_q6_a3">Syarikat teknologi</string>
+</resources>

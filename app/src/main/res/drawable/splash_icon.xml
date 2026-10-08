@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Icon for the Android 12+ SYSTEM splash (shown for a moment before our own
+    SplashActivity appears). The system crops the icon to a circle, so we
+    shrink the wide GMI logo with an inset to keep it fully visible.
+-->
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/gmi_logo_light"
+    android:inset="25%" />

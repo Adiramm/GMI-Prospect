@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    GMI colour palette, taken from the GMI logo (blue #1007A0, red #EF3240).
+    Themes map these raw colours to Material roles; layouts should use theme
+    attributes (?attr/colorPrimary, ...) instead of these names where possible.
+-->
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- GMI Blue: main brand colour -->
+    <color name="blue_50">#ECEBF7</color>
+    <color name="blue_100">#D4D2EE</color>
+    <color name="blue_200">#ABA8DE</color>
+    <color name="blue_300">#7C77CB</color>
+    <color name="blue_400">#453EB5</color>
+    <color name="blue_500">#1007A0</color>
+    <color name="blue_600">#0D0683</color>
+    <color name="blue_700">#0A0568</color>
+    <color name="blue_800">#08034D</color>
+    <color name="blue_900">#050233</color>
+
+    <!-- GMI Red: pop colour only (badges, dots, confetti), never large areas -->
+    <color name="red_50">#FEEFF0</color>
+    <color name="red_100">#FCDADD</color>
+    <color name="red_200">#F9B7BC</color>
+    <color name="red_300">#F68E96</color>
+    <color name="red_400">#F35F6A</color>
+    <color name="red_500">#EF3240</color>
+    <color name="red_600">#C42934</color>
+    <color name="red_700">#9B202A</color>
+    <color name="red_800">#73181F</color>
+    <color name="red_900">#4C1014</color>
+
+    <!-- Neutrals: backgrounds, text, dividers -->
+    <color name="neutral_50">#F7F8FC</color>
+    <color name="neutral_100">#EEF0F7</color>
+    <color name="neutral_200">#DDE1EC</color>
+    <color name="neutral_300">#C2C7D6</color>
+    <color name="neutral_400">#9AA0B4</color>
+    <color name="neutral_500">#6E7489</color>
+    <color name="neutral_600">#4E5368</color>
+    <color name="neutral_700">#353A4D</color>
+    <color name="neutral_800">#1F2233</color>
+    <color name="neutral_900">#12141F</color>
+
+    <!-- Header gradient (Splash/Home). Dark-mode values are in values-night/colors.xml -->
+    <color name="header_gradient_start">@color/blue_500</color>
+    <color name="header_gradient_end">@color/blue_700</color>
+
+    <!-- Content drawn ON the gradient (same in light and dark mode) -->
+    <color name="on_header">@color/white</color>
+    <color name="on_header_variant">@color/blue_100</color>
+    <!-- 15% white: background of the round buttons in the Home header -->
+    <color name="header_overlay">#26FFFFFF</color>
+    <!-- Extra confetti colour (ConfettiView) next to the GMI blues and reds -->
+    <color name="confetti_yellow">#FFC83D</color>
+</resources>

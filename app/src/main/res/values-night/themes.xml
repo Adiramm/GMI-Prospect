@@ -1,0 +1,46 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--
+        DARK theme colours. Same style name as values/themes.xml, so when night
+        mode is on Android uses this version instead. Theme.GMIProspect (fonts,
+        shapes) is inherited from values/themes.xml and does not need repeating.
+    -->
+    <style name="Base.Theme.GMIProspect" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary = lighter GMI blue so it stays readable on dark blue -->
+        <item name="colorPrimary">@color/blue_300</item>
+        <item name="colorOnPrimary">@color/blue_900</item>
+        <item name="colorPrimaryContainer">@color/blue_700</item>
+        <item name="colorOnPrimaryContainer">@color/blue_50</item>
+
+        <item name="colorSecondary">@color/blue_200</item>
+        <item name="colorOnSecondary">@color/blue_900</item>
+        <item name="colorSecondaryContainer">@color/blue_700</item>
+        <item name="colorOnSecondaryContainer">@color/blue_50</item>
+
+        <!-- Tertiary = GMI red pop accent -->
+        <item name="colorTertiary">@color/red_400</item>
+        <item name="colorOnTertiary">@color/white</item>
+        <item name="colorTertiaryContainer">@color/red_800</item>
+        <item name="colorOnTertiaryContainer">@color/red_100</item>
+
+        <item name="colorError">@color/red_300</item>
+        <item name="colorOnError">@color/red_900</item>
+
+        <!-- Background, surfaces and text -->
+        <item name="android:colorBackground">@color/blue_900</item>
+        <item name="colorOnBackground">@color/neutral_50</item>
+        <item name="colorSurface">@color/blue_800</item>
+        <item name="colorOnSurface">@color/neutral_50</item>
+        <item name="colorSurfaceVariant">@color/blue_700</item>
+        <item name="colorOnSurfaceVariant">@color/neutral_300</item>
+        <item name="colorSurfaceContainerLowest">@color/blue_900</item>
+        <item name="colorSurfaceContainerLow">@color/blue_800</item>
+        <item name="colorSurfaceContainer">@color/blue_800</item>
+        <item name="colorSurfaceContainerHigh">@color/blue_700</item>
+        <item name="colorSurfaceContainerHighest">@color/blue_700</item>
+        <item name="colorOutline">@color/neutral_500</item>
+        <item name="colorOutlineVariant">@color/blue_700</item>
+
+        <!-- Light status/nav bar icons on our dark background -->
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>

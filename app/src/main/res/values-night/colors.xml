@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Dark-mode overrides. Only colours that change between light and dark live here. -->
+<resources>
+    <color name="header_gradient_start">@color/blue_700</color>
+    <color name="header_gradient_end">@color/blue_900</color>
+</resources>

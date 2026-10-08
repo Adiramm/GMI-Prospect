@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Typography and component styles shared by every screen.
+    Rule: never set a font on a single view - use one of these TextAppearances.
+    Each TextAppearance sets both android:fontFamily and fontFamily so the
+    custom font also works on API 24-25 (via AppCompat).
+-->
+<resources>
+
+    <!-- ========== Typography ========== -->
+
+    <!-- Extra-large greeting on the Splash screen -->
+    <style name="TextAppearance.GMI.Display" parent="TextAppearance.GMI.Headline">
+        <item name="android:textSize">34sp</item>
+    </style>
+
+    <!-- Big screen headings, e.g. "You're eligible for 5 courses" -->
+    <style name="TextAppearance.GMI.Headline" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:fontFamily">@font/plus_jakarta_sans_extrabold</item>
+        <item name="fontFamily">@font/plus_jakarta_sans_extrabold</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <!-- Card titles, section headers, toolbar titles -->
+    <style name="TextAppearance.GMI.Title" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:fontFamily">@font/plus_jakarta_sans_bold</item>
+        <item name="fontFamily">@font/plus_jakarta_sans_bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <!-- Smaller title for list cards, where long course names would wrap a lot -->
+    <style name="TextAppearance.GMI.Title.Small">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!-- Small all-caps faculty header in the course list -->
+    <style name="TextAppearance.GMI.SectionHeader" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:fontFamily">@font/manrope_semibold</item>
+        <item name="fontFamily">@font/manrope_semibold</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.06</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
+    <!-- Normal paragraph text -->
+    <style name="TextAppearance.GMI.Body" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:fontFamily">@font/manrope_regular</item>
+        <item name="fontFamily">@font/manrope_regular</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <!-- Small secondary text: durations, captions, chip text -->
+    <style name="TextAppearance.GMI.Label" parent="TextAppearance.Material3.LabelMedium">
+        <item name="android:fontFamily">@font/manrope_medium</item>
+        <item name="fontFamily">@font/manrope_medium</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
+    </style>
+
+    <!-- Button labels (no ALL CAPS - friendlier, banking-app style).
+         No textColor here: the button style decides it per state. -->
+    <style name="TextAppearance.GMI.Button" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:fontFamily">@font/manrope_semibold</item>
+        <item name="fontFamily">@font/manrope_semibold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <!-- Smaller button label for compact buttons (Home header toggles) -->
+    <style name="TextAppearance.GMI.Button.Small">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- ========== Shapes ========== -->
+
+    <!-- 20dp rounded corners for cards -->
+    <style name="ShapeAppearance.GMI.Card" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/card_corner_radius</item>
+    </style>
+
+    <!-- 28dp corners = full pill on a 56dp-tall button -->
+    <style name="ShapeAppearance.GMI.Pill" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/button_corner_radius</item>
+    </style>
+
+    <!-- Fully round ends at any height (small header buttons) -->
+    <style name="ShapeAppearance.GMI.Full" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!-- ========== Components ========== -->
+
+    <!-- Default for every TextView (set as android:textViewStyle in the theme).
+         A view's own android:textAppearance still overrides this. -->
+    <style name="Widget.GMI.TextView" parent="android:Widget.TextView">
+        <item name="android:textAppearance">@style/TextAppearance.GMI.Body</item>
+    </style>
+
+    <!-- Default MaterialCardView (set as materialCardViewStyle in the theme).
+         Elevation/stroke come from dimens.xml so dark mode can swap the shadow
+         for a thin outline (shadows are hard to see on dark blue). -->
+    <style name="Widget.GMI.Card" parent="Widget.Material3.CardView.Elevated">
+        <item name="shapeAppearance">@style/ShapeAppearance.GMI.Card</item>
+        <item name="cardBackgroundColor">?attr/colorSurface</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="strokeWidth">@dimen/card_stroke_width</item>
+        <item name="strokeColor">?attr/colorOutlineVariant</item>
+        <item name="contentPadding">@dimen/card_padding</item>
+    </style>
+
+    <!-- Filled pill button, 56dp tall (default materialButtonStyle) -->
+    <style name="Widget.GMI.Button" parent="Widget.Material3.Button">
+        <item name="shapeAppearance">@style/ShapeAppearance.GMI.Pill</item>
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.GMI.Button</item>
+    </style>
+
+    <!-- Compact pill button inside list cards (e.g. Apply on the Result screen) -->
+    <style name="Widget.GMI.Button.Small">
+        <item name="shapeAppearance">@style/ShapeAppearance.GMI.Full</item>
+        <item name="android:minHeight">44dp</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingEnd">24dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.GMI.Button.Small</item>
+    </style>
+
+    <!-- Outlined pill button for secondary actions (e.g. Back, Retake) -->
+    <style name="Widget.GMI.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="shapeAppearance">@style/ShapeAppearance.GMI.Pill</item>
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.GMI.Button</item>
+    </style>
+
+    <!-- White pill button on the blue gradient (Splash "Let's go") -->
+    <style name="Widget.GMI.Button.OnGradient">
+        <item name="backgroundTint">@color/white</item>
+        <item name="android:textColor">@color/blue_500</item>
+        <item name="iconTint">@color/blue_500</item>
+    </style>
+
+    <!-- Small see-through round button in the Home header (language toggle) -->
+    <style name="Widget.GMI.Button.Header" parent="Widget.Material3.Button">
+        <item name="shapeAppearance">@style/ShapeAppearance.GMI.Full</item>
+        <item name="backgroundTint">@color/header_overlay</item>
+        <item name="android:textColor">@color/on_header</item>
+        <item name="iconTint">@color/on_header</item>
+        <item name="iconSize">20dp</item>
+        <item name="iconPadding">6dp</item>
+        <item name="android:minWidth">44dp</item>
+        <item name="android:minHeight">44dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingStart">14dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.GMI.Button.Small</item>
+    </style>
+
+    <!-- Icon-only version (theme toggle): a 44dp circle -->
+    <style name="Widget.GMI.Button.Header.Icon">
+        <item name="iconPadding">0dp</item>
+        <item name="iconGravity">textStart</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+    </style>
+
+    <!-- Small red "pop" badge chip, e.g. "Limited seats". Display only, not tappable. -->
+    <style name="Widget.GMI.Chip.Badge" parent="Widget.Material3.Chip.Assist">
+        <item name="chipBackgroundColor">?attr/colorTertiaryContainer</item>
+        <item name="android:textColor">?attr/colorOnTertiaryContainer</item>
+        <item name="android:textAppearance">@style/TextAppearance.GMI.Label</item>
+        <item name="chipStrokeWidth">0dp</item>
+        <item name="chipMinHeight">26dp</item>
+        <item name="chipCornerRadius">13dp</item>
+        <item name="ensureMinTouchTargetSize">false</item>
+        <item name="android:clickable">false</item>
+        <item name="android:focusable">false</item>
+    </style>
+
+    <!-- Solid red version for the strongest highlight ("⭐ Best match") -->
+    <style name="Widget.GMI.Chip.Badge.Solid">
+        <item name="chipBackgroundColor">?attr/colorTertiary</item>
+        <item name="android:textColor">?attr/colorOnTertiary</item>
+    </style>
+
+    <!-- Rounded single-select grade chip (A+ ... G). Filled blue when picked;
+         no check mark, the colour change is enough. -->
+    <style name="Widget.GMI.Chip.Grade" parent="Widget.Material3.Chip.Filter">
+        <item name="chipBackgroundColor">@color/chip_grade_background</item>
+        <item name="android:textColor">@color/chip_grade_text</item>
+        <item name="android:textAppearance">@style/TextAppearance.GMI.Button.Small</item>
+        <item name="chipStrokeWidth">0dp</item>
+        <item name="checkedIconVisible">false</item>
+        <item name="chipMinHeight">40dp</item>
+        <item name="chipCornerRadius">20dp</item>
+    </style>
+
+    <!-- Level tabs (Diploma / GAPP / GUFP): blend into the background like the toolbar -->
+    <style name="Widget.GMI.TabLayout" parent="Widget.Material3.TabLayout">
+        <item name="android:background">?android:attr/colorBackground</item>
+        <item name="tabTextAppearance">@style/TextAppearance.GMI.Button.Small</item>
+        <item name="tabIndicatorFullWidth">false</item>
+        <item name="tabGravity">fill</item>
+        <item name="tabMode">fixed</item>
+    </style>
+
+    <!-- 16dp corners for text fields -->
+    <style name="ShapeAppearance.GMI.Input" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <!-- Default text field (set as textInputStyle in the theme): outlined, rounded -->
+    <style name="Widget.GMI.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="shapeAppearance">@style/ShapeAppearance.GMI.Input</item>
+        <item name="startIconTint">?attr/colorOnSurfaceVariant</item>
+    </style>
+
+    <!-- Top app bar for inner screens: blends into the background, back arrow
+         and title use the normal text colour. -->
+    <style name="Widget.GMI.Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="android:background">?android:attr/colorBackground</item>
+        <item name="navigationIcon">@drawable/ic_arrow_back</item>
+        <item name="navigationIconTint">?attr/colorOnSurface</item>
+        <item name="navigationContentDescription">@string/cd_navigate_up</item>
+        <item name="titleTextAppearance">@style/TextAppearance.GMI.Title</item>
+    </style>
+</resources>

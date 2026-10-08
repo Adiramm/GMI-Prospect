@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- android:name=".GmiApp" makes our Application class run first (applies saved theme).
+         android:localeConfig lists our languages for the Android 13+ per-app language setting. -->
+    <application
+        android:name=".GmiApp"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:localeConfig="@xml/locales_config"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.GMIProspect"
+        tools:targetApi="33">
+        <!-- Launcher: Splash uses its own theme so the gradient shows instantly -->
+        <activity
+            android:name=".ui.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.GMIProspect.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.HomeActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.CourseListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.CourseDetailActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.GradeInputActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.QuizActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ResultActivity"
+            android:exported="false" />
+
+        <!-- adjustResize: the keyboard shrinks the screen, so Submit stays visible -->
+        <activity
+            android:name=".ui.AdmissionFormActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Placeholders for now (built in later phases) -->
+        <activity
+            android:name=".ui.AboutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ContactActivity"
+            android:exported="false" />
+
+        <!-- Per-app language (EN / BM). autoStoreLocales=true lets AppCompat save the
+             language chosen with setApplicationLocales() and re-apply it on API < 33. -->
+        <service
+            android:name="androidx.appcompat.app.AppLocalesMetadataHolderService"
+            android:enabled="false"
+            android:exported="false">
+            <meta-data
+                android:name="autoStoreLocales"
+                android:value="true" />
+        </service>
+    </application>
+
+</manifest>

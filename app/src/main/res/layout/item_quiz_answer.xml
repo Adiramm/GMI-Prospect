@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    One large answer card on the quiz screen: letter badge (A-D) + answer text.
+    Included 4 times in activity_quiz.xml. The selected look (blue outline,
+    tinted fill, filled badge) is applied in QuizActivity.showSelection().
+-->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:checkable="true"
+    android:clickable="true"
+    android:focusable="true"
+    android:minHeight="76dp"
+    app:checkedIcon="@null">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textLetter"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_icon_circle"
+            android:backgroundTint="?attr/colorSurfaceVariant"
+            android:gravity="center"
+            android:importantForAccessibility="no"
+            android:textAppearance="@style/TextAppearance.GMI.Title.Small"
+            tools:text="A" />
+
+        <TextView
+            android:id="@+id/textAnswer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_weight="1"
+            android:textAppearance="@style/TextAppearance.GMI.Body"
+            tools:text="@string/quiz_q1_a0" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
