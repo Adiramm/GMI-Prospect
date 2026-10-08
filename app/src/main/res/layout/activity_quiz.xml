@@ -2,6 +2,7 @@
 <!--
     Interest quiz: progress at the top, one question with 4 answer cards in the
     middle (quizContent slides left/right between questions), Back / Next at the bottom.
+    Landscape has its own version with a 2 x 2 answer grid: layout-land/activity_quiz.xml.
     fitsSystemWindows pads the screen away from the status/navigation bars.
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

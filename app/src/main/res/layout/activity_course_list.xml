@@ -20,21 +20,61 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize" />
 
+    <!-- Search by course name. Because the EditText has an id, Android saves and
+         restores its text on rotation BY ITSELF - unlike the tabs, which are
+         added in code and need CourseListActivity.onSaveInstanceState. -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/screen_padding"
+        android:layout_marginEnd="@dimen/screen_padding"
+        android:hint="@string/search_courses_hint"
+        app:endIconMode="clear_text"
+        app:startIconDrawable="@drawable/ic_search">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLevels"
         style="@style/Widget.GMI.TabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <!-- The id lets RecyclerView save its scroll position on rotation by itself -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerCourses"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:clipToPadding="false"
-        android:paddingTop="@dimen/spacing_small"
-        android:paddingBottom="@dimen/spacing_medium"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_course" />
+        android:layout_weight="1">
+
+        <!-- The id lets RecyclerView save its scroll position on rotation by itself -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerCourses"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingTop="@dimen/spacing_small"
+            android:paddingBottom="@dimen/spacing_medium"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_course" />
+
+        <!-- Shown instead of the list when the search matches nothing -->
+        <TextView
+            android:id="@+id/textNoMatch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/spacing_large"
+            android:textAppearance="@style/TextAppearance.GMI.Body"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:visibility="gone"
+            tools:text="@string/search_no_results"
+            tools:visibility="visible" />
+    </FrameLayout>
 </LinearLayout>

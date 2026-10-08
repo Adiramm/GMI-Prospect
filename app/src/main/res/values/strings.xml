@@ -86,6 +86,9 @@
 
     <!-- ========== Course list & detail ========== -->
     <string name="title_course_detail">Course Details</string>
+    <!-- Course search -->
+    <string name="search_courses_hint">Search courses</string>
+    <string name="search_no_results">No courses match \"%1$s\"</string>
     <string name="badge_limited_seats">Limited seats</string>
     <string name="detail_label_level">Level</string>
     <string name="detail_label_faculty">Faculty</string>
@@ -142,6 +145,18 @@
     <string name="result_course_meta">%1$s · %2$s</string>
     <string name="result_not_eligible_title">Not quite yet — and that\'s okay</string>
     <string name="result_not_eligible_body">With these grades you don\'t meet the entry requirements yet. Here is what each programme still needs. Check your grades again, or talk to us about your options.</string>
+    <!-- Share results (ACTION_SEND) -->
+    <string name="action_share">Share results</string>
+    <string name="share_chooser_title">Share your results</string>
+    <string name="share_subject">My GMI course results</string>
+    <plurals name="share_top_matches">
+        <item quantity="one">My best match from the interest quiz:</item>
+        <item quantity="other">Top %d matches from my interest quiz:</item>
+    </plurals>
+    <string name="share_still_need">What I still need:</string>
+    <string name="share_footer">Check yours at www.gmi.edu.my</string>
+    <string name="share_line" translatable="false">%1$d. %2$s</string>
+    <string name="share_bullet" translatable="false">• %1$s</string>
     <string name="result_retake">Retake</string>
     <string name="cd_apply_for">Apply for %1$s</string>
 

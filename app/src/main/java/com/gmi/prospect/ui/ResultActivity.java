@@ -21,9 +21,11 @@ import com.gmi.prospect.logic.EligibilityChecker;
 import com.gmi.prospect.logic.EligibilityResult;
 import com.gmi.prospect.ui.adapter.ResultAdapter;
 import com.gmi.prospect.ui.view.ConfettiView;
+import com.google.android.material.appbar.MaterialToolbar;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -37,7 +39,8 @@ import java.util.Set;
  *     <li>Eligible for none → friendly message, what is missing per level,
  *         Retake and Contact Us buttons. No confetti.</li>
  * </ul>
- * The Home button is always shown.
+ * The Home button is always shown, and the toolbar's Share button sends a
+ * short text summary to any app (WhatsApp, Gmail ...) with ACTION_SEND.
  * <p>
  * LIFECYCLE: confetti animates only between onResume and onPause (rule #5),
  * and plays only once - after rotation it is not replayed (saved flag).
@@ -46,9 +49,15 @@ public class ResultActivity extends BaseActivity {
 
     /** Bundle key: true once the confetti has been shown on this screen. */
     private static final String KEY_CONFETTI_SHOWN = "confetti_shown";
+    /** How many ranked courses go into the shared text. */
+    private static final int SHARE_TOP_COUNT = 5;
 
     private ConfettiView confettiView;
     private boolean confettiShown;
+    /** Result of the check for every course (for sharing). */
+    private Map<Course, EligibilityResult> results;
+    /** Eligible courses, best match first; empty when not eligible. */
+    private List<Course> rankedCourses = new ArrayList<>();
 
     // Works out the results from the Intent extras (grades + quiz scores).
     // This is quick, so it is simply redone after every re-creation. The only
@@ -59,9 +68,10 @@ public class ResultActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
         setupToolbar(R.string.title_result);
+        setupShareButton();
         confettiView = findViewById(R.id.confettiView);
 
-        Map<Course, EligibilityResult> results = EligibilityChecker.checkAll(readGrades());
+        results = EligibilityChecker.checkAll(readGrades());
         List<Course> eligible = new ArrayList<>();
         for (Map.Entry<Course, EligibilityResult> entry : results.entrySet()) {
             if (entry.getValue().isEligible()) {
@@ -135,13 +145,11 @@ public class ResultActivity extends BaseActivity {
 
     /** Ranks the eligible courses by the quiz and shows them in the RecyclerView. */
     private void showEligible(List<Course> eligible) {
-        List<Course> ranked = CourseRanker.rank(eligible, readScores(),
+        rankedCourses = CourseRanker.rank(eligible, readScores(),
                 course -> getString(course.getNameRes()));
-        String headline = getResources().getQuantityString(
-                R.plurals.result_eligible_headline, ranked.size(), ranked.size());
 
         RecyclerView recycler = findViewById(R.id.recyclerResults);
-        recycler.setAdapter(new ResultAdapter(headline, ranked, this::openAdmissionForm));
+        recycler.setAdapter(new ResultAdapter(eligibleHeadline(), rankedCourses, this::openAdmissionForm));
         recycler.setVisibility(View.VISIBLE);
     }
 
@@ -157,29 +165,16 @@ public class ResultActivity extends BaseActivity {
     // Not eligible
     // ---------------------------------------------------------------------
 
-    /**
-     * One card per level with what is still missing. All courses of a level
-     * share the same rule, so a LinkedHashSet removes the repeated lines while
-     * keeping their order.
-     */
+    /** One card per level with what is still missing. */
     private void showNotEligible(Map<Course, EligibilityResult> results) {
         ViewGroup container = findViewById(R.id.containerMissingLevels);
         LayoutInflater inflater = LayoutInflater.from(this);
 
-        for (Level level : Level.values()) {
-            Set<String> missing = new LinkedHashSet<>();
-            for (Map.Entry<Course, EligibilityResult> entry : results.entrySet()) {
-                if (entry.getKey().getLevel() == level) {
-                    missing.addAll(entry.getValue().getMissingMessages(this));
-                }
-            }
-            if (missing.isEmpty()) {
-                continue;
-            }
+        for (Map.Entry<Level, Set<String>> level : missingByLevel(results).entrySet()) {
             View card = inflater.inflate(R.layout.item_missing_level, container, false);
-            ((TextView) card.findViewById(R.id.textLevelTitle)).setText(level.getLabelRes());
+            ((TextView) card.findViewById(R.id.textLevelTitle)).setText(level.getKey().getLabelRes());
             ViewGroup bullets = card.findViewById(R.id.containerMissing);
-            for (String line : missing) {
+            for (String line : level.getValue()) {
                 View row = inflater.inflate(R.layout.item_requirement, bullets, false);
                 ((TextView) row.findViewById(R.id.textRequirement)).setText(line);
                 bullets.addView(row);
@@ -191,6 +186,27 @@ public class ResultActivity extends BaseActivity {
         findViewById(R.id.buttonContact).setOnClickListener(v ->
                 startActivity(new Intent(this, ContactActivity.class)));
         findViewById(R.id.scrollNotEligible).setVisibility(View.VISIBLE);
+    }
+
+    /**
+     * What is still missing, per level (levels with nothing missing are left
+     * out). All courses of a level share the same rule, so a LinkedHashSet
+     * removes the repeated lines while keeping their order.
+     */
+    private Map<Level, Set<String>> missingByLevel(Map<Course, EligibilityResult> results) {
+        Map<Level, Set<String>> byLevel = new LinkedHashMap<>();
+        for (Level level : Level.values()) {
+            Set<String> missing = new LinkedHashSet<>();
+            for (Map.Entry<Course, EligibilityResult> entry : results.entrySet()) {
+                if (entry.getKey().getLevel() == level) {
+                    missing.addAll(entry.getValue().getMissingMessages(this));
+                }
+            }
+            if (!missing.isEmpty()) {
+                byLevel.put(level, missing);
+            }
+        }
+        return byLevel;
     }
 
     /**
@@ -210,5 +226,69 @@ public class ResultActivity extends BaseActivity {
         Intent intent = new Intent(this, HomeActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
+    }
+
+    // ---------------------------------------------------------------------
+    // Share (implicit Intent)
+    // ---------------------------------------------------------------------
+
+    private void setupShareButton() {
+        MaterialToolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.inflateMenu(R.menu.menu_result);
+        toolbar.setOnMenuItemClickListener(item -> {
+            if (item.getItemId() == R.id.actionShare) {
+                shareResults();
+                return true;
+            }
+            return false;
+        });
+    }
+
+    /** "You're eligible for 17 courses 🎉" */
+    private String eligibleHeadline() {
+        return getResources().getQuantityString(
+                R.plurals.result_eligible_headline, rankedCourses.size(), rankedCourses.size());
+    }
+
+    /**
+     * Opens Android's share sheet with a plain-text summary. ACTION_SEND lets the
+     * student pick ANY app that accepts text. The share sheet covers this screen,
+     * so it goes through onPause (the confetti freezes) and back to onResume.
+     */
+    private void shareResults() {
+        Intent send = new Intent(Intent.ACTION_SEND);
+        send.setType("text/plain");
+        send.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.share_subject));
+        send.putExtra(Intent.EXTRA_TEXT, buildShareText());
+        // createChooser always shows the sheet, and never fails even if no app matches
+        startActivity(Intent.createChooser(send, getString(R.string.share_chooser_title)));
+    }
+
+    /** Eligible: headline + top 5 courses. Not eligible: what is missing per level. */
+    private String buildShareText() {
+        StringBuilder text = new StringBuilder();
+        if (!rankedCourses.isEmpty()) {
+            text.append(eligibleHeadline()).append("\n\n");
+            int count = Math.min(SHARE_TOP_COUNT, rankedCourses.size());
+            text.append(getResources().getQuantityString(R.plurals.share_top_matches, count, count));
+            for (int i = 0; i < count; i++) {
+                text.append('\n').append(getString(R.string.share_line, i + 1,
+                        getString(rankedCourses.get(i).getNameRes())));
+                if (i == 0) {
+                    text.append("  ").append(getString(R.string.result_best_match));
+                }
+            }
+        } else {
+            text.append(getString(R.string.result_not_eligible_title)).append("\n\n")
+                    .append(getString(R.string.share_still_need));
+            for (Map.Entry<Level, Set<String>> level : missingByLevel(results).entrySet()) {
+                text.append("\n\n").append(getString(level.getKey().getLabelRes()));
+                for (String line : level.getValue()) {
+                    text.append('\n').append(getString(R.string.share_bullet, line));
+                }
+            }
+        }
+        text.append("\n\n").append(getString(R.string.share_footer));
+        return text.toString();
     }
 }

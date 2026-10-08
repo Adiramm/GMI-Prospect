@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Toolbar action on the Result screen: share the results (ACTION_SEND). -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/actionShare"
+        android:icon="@drawable/ic_share"
+        android:title="@string/action_share"
+        app:iconTint="?attr/colorOnSurface"
+        app:showAsAction="always" />
+</menu>

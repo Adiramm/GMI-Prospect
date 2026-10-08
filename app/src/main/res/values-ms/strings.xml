@@ -76,6 +76,9 @@
 
     <!-- ========== Senarai & butiran kursus ========== -->
     <string name="title_course_detail">Butiran Kursus</string>
+    <!-- Carian kursus -->
+    <string name="search_courses_hint">Cari kursus</string>
+    <string name="search_no_results">Tiada kursus yang sepadan dengan \"%1$s\"</string>
     <string name="badge_limited_seats">Tempat terhad</string>
     <string name="detail_label_level">Peringkat</string>
     <string name="detail_label_faculty">Fakulti</string>
@@ -130,6 +133,15 @@
     <string name="result_course_meta">%1$s · %2$s</string>
     <string name="result_not_eligible_title">Belum lagi — dan itu tidak mengapa</string>
     <string name="result_not_eligible_body">Dengan gred ini anda belum memenuhi syarat kemasukan. Berikut ialah perkara yang masih diperlukan bagi setiap program. Semak semula gred anda, atau hubungi kami untuk pilihan lain.</string>
+    <!-- Kongsi keputusan (ACTION_SEND) -->
+    <string name="action_share">Kongsi keputusan</string>
+    <string name="share_chooser_title">Kongsi keputusan anda</string>
+    <string name="share_subject">Keputusan kursus GMI saya</string>
+    <plurals name="share_top_matches">
+        <item quantity="other">%d padanan teratas daripada kuiz minat saya:</item>
+    </plurals>
+    <string name="share_still_need">Apa yang saya masih perlukan:</string>
+    <string name="share_footer">Semak kelayakan anda di www.gmi.edu.my</string>
     <string name="result_retake">Cuba semula</string>
     <string name="cd_apply_for">Mohon untuk %1$s</string>
 

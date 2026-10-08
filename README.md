@@ -29,12 +29,14 @@ rotated, backgrounded or switched between themes and languages.
 
 ## Features
 
-- **Courses**: 17 programmes (15 diplomas, GAPP, GUFP) in tabs, with diplomas grouped by faculty.
+- **Courses**: 17 programmes (15 diplomas, GAPP, GUFP) in tabs, with diplomas grouped by faculty, and a search box
+  that filters by course name.
 - **Eligibility check**: enter SPM grades for the core subjects and any optional subjects. The app checks every
   programme's entry rules and explains what is missing for each level.
-- **Interest quiz**: 6 questions score Electrical, Mechanical, Design and IT. The scores only change the order of
+- **Interest quiz**: 6 questions score Electrical, Mechanical, Design and IT (with a 2×2 answer layout in landscape). The scores only change the order of
   the results, never eligibility.
-- **Ranked results**: confetti when eligible, with a "⭐ Best match" badge on the top course.
+- **Ranked results**: confetti when eligible, with a "⭐ Best match" badge on the top course. **Share** sends the top
+  5 courses (or what's still missing) to any app.
 - **Admission form**: validated fields (IC auto-formatted as `000000-00-0000`). The draft survives leaving the
   screen, and Submit opens the email app with everything filled in.
 - **About Us / Contact Us**: call, email, website and map, opened through implicit Intents.
@@ -137,6 +139,10 @@ The Gradle daemon needs JDK 21. Android Studio's bundled JDK works: point `JAVA_
 - **Rotate** on Grade Input or the Quiz: everything you picked is still there.
 - **Press Home** during the splash: the app stays in the background instead of jumping to Home.
 - **Press Home** while confetti is falling: it pauses, and continues when you come back.
+- **Tap Share** on the Result screen: the share sheet only partly covers the screen, so you get `onPause` but no
+  `onStop`, and the confetti freezes.
+- **Type in the course search, then rotate**: the text comes back by itself (the field has an ID), while the
+  selected tab needs `onSaveInstanceState`.
 - **Leave the Admission Form** half filled in and open it again: "Draft restored".
 - **Switch theme or language** on Home and watch Logcat as the Activity is destroyed and re-created.
 - Or turn on the **`>_` lifecycle log** on Home and watch all of the above on the phone itself.

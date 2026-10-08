@@ -2,6 +2,13 @@ package com.gmi.prospect.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,6 +25,7 @@ import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Course list with three tabs (Diploma / GAPP / GUFP) filtering ONE RecyclerView.
@@ -26,6 +34,10 @@ import java.util.List;
  * enum. The Diploma tab is grouped by faculty with small section headers.
  * The selected tab survives rotation / theme / language changes through
  * onSaveInstanceState.
+ * <p>
+ * A search field above the tabs filters the open tab by course name. Its text
+ * is restored after rotation AUTOMATICALLY (the EditText has an id) - a handy
+ * contrast with the tab, which we must save ourselves.
  */
 public class CourseListActivity extends BaseActivity {
 
@@ -35,6 +47,8 @@ public class CourseListActivity extends BaseActivity {
     private TabLayout tabLevels;
     private RecyclerView recyclerCourses;
     private CourseAdapter adapter;
+    private EditText editSearch;
+    private TextView textNoMatch;
 
     // Builds the UI. If Android re-created us (rotation, dark mode, language),
     // savedInstanceState holds the tab the user had open, so we select it
@@ -48,6 +62,8 @@ public class CourseListActivity extends BaseActivity {
         recyclerCourses = findViewById(R.id.recyclerCourses);
         adapter = new CourseAdapter(this::openCourseDetail);
         recyclerCourses.setAdapter(adapter);
+        editSearch = findViewById(R.id.editSearch);
+        textNoMatch = findViewById(R.id.textNoMatch);
 
         int selectedTab = 0; // fresh start → Diploma
         if (savedInstanceState != null) {
@@ -55,6 +71,9 @@ public class CourseListActivity extends BaseActivity {
             LifecycleLog.d("CourseListActivity restored tab " + selectedTab);
         }
         setupTabs(selectedTab);
+        // The search text itself is put back by Android AFTER onCreate (in
+        // onRestoreInstanceState); the TextWatcher below then re-filters the list.
+        setupSearch();
     }
 
     // Called before the Activity may be destroyed and re-created. Tabs are
@@ -104,20 +123,37 @@ public class CourseListActivity extends BaseActivity {
         });
     }
 
-    /** Puts the courses of one level into the RecyclerView. */
+    /** Puts the courses of one level (matching the search) into the RecyclerView. */
     private void showLevel(Level level) {
-        adapter.setItems(buildRows(level));
+        String query = searchText();
+        List<Object> rows = buildRows(level, query);
+        adapter.setItems(rows);
+
+        boolean noMatch = rows.isEmpty();
+        recyclerCourses.setVisibility(noMatch ? View.GONE : View.VISIBLE);
+        textNoMatch.setVisibility(noMatch ? View.VISIBLE : View.GONE);
+        if (noMatch) {
+            textNoMatch.setText(getString(R.string.search_no_results, query));
+        }
     }
 
     /**
-     * Builds the rows for one tab. For Diplomas a Faculty header is inserted
-     * whenever the faculty changes (CourseRepository keeps diplomas grouped
-     * by faculty). GAPP and GUFP have one course each, so no headers.
+     * Builds the rows for one tab: only courses whose name contains the search
+     * text. For Diplomas a Faculty header is inserted whenever the faculty
+     * changes (CourseRepository keeps diplomas grouped by faculty), so a header
+     * only appears when at least one of its courses matches. GAPP and GUFP have
+     * one course each, so no headers.
      */
-    private List<Object> buildRows(Level level) {
+    private List<Object> buildRows(Level level, String query) {
+        String needle = query.toLowerCase(Locale.ROOT);
         List<Object> rows = new ArrayList<>();
         Faculty currentFaculty = null;
         for (Course course : CourseRepository.getCoursesByLevel(level)) {
+            // Match against the name in the CURRENT language (EN or BM)
+            String name = getString(course.getNameRes()).toLowerCase(Locale.ROOT);
+            if (!name.contains(needle)) {
+                continue;
+            }
             if (level == Level.DIPLOMA && course.getFaculty() != currentFaculty) {
                 currentFaculty = course.getFaculty();
                 rows.add(currentFaculty);
@@ -125,6 +161,45 @@ public class CourseListActivity extends BaseActivity {
             rows.add(course);
         }
         return rows;
+    }
+
+    // ---------------------------------------------------------------------
+    // Search
+    // ---------------------------------------------------------------------
+
+    /** The trimmed search text ("" when empty). */
+    private String searchText() {
+        return editSearch.getText() == null ? "" : editSearch.getText().toString().trim();
+    }
+
+    /** Re-filters while typing; the keyboard's search key just closes the keyboard. */
+    private void setupSearch() {
+        editSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // nothing to do
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // nothing to do
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // Same text on every tab: switching tab keeps the filter
+                showLevel(Level.values()[tabLevels.getSelectedTabPosition()]);
+            }
+        });
+        editSearch.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                InputMethodManager keyboard = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                keyboard.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                v.clearFocus();
+                return true;
+            }
+            return false;
+        });
     }
 
     // ---------------------------------------------------------------------
