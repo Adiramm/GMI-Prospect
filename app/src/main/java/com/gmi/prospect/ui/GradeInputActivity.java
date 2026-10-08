@@ -3,7 +3,6 @@ package com.gmi.prospect.ui;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -16,6 +15,7 @@ import androidx.annotation.StringRes;
 
 import com.gmi.prospect.R;
 import com.gmi.prospect.base.BaseActivity;
+import com.gmi.prospect.base.LifecycleLog;
 import com.gmi.prospect.data.Grade;
 import com.gmi.prospect.data.Subject;
 import com.gmi.prospect.data.SubjectRepository;
@@ -131,7 +131,7 @@ public class GradeInputActivity extends BaseActivity {
                 pickGrade(subjectId, grades.getString(subjectId));
             }
         }
-        Log.d(TAG, "GradeInputActivity restored " + addedSubjectIds.size()
+        LifecycleLog.d("GradeInputActivity restored " + addedSubjectIds.size()
                 + " added subjects and " + selectedGrades.size() + " grades");
     }
 

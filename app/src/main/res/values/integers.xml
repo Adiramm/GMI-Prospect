@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Lines visible in the expanded lifecycle log panel (portrait).
+         values-land/integers.xml uses fewer, because landscape has little height. -->
+    <integer name="log_visible_lines">6</integer>
+</resources>

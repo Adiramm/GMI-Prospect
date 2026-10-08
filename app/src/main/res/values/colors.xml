@@ -56,4 +56,13 @@
     <color name="header_overlay">#26FFFFFF</color>
     <!-- Extra confetti colour (ConfettiView) next to the GMI blues and reds -->
     <color name="confetti_yellow">#FFC83D</color>
+
+    <!-- Lifecycle log panel: dark "Logcat" look in BOTH themes, so it never
+         looks like part of the app itself -->
+    <color name="log_background">@color/neutral_900</color>
+    <color name="log_divider">@color/blue_400</color>
+    <color name="log_text">@color/neutral_50</color>
+    <color name="log_muted">@color/neutral_400</color>
+    <color name="log_class">@color/blue_200</color>
+    <color name="log_newest">@color/red_300</color>
 </resources>

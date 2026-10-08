@@ -60,6 +60,20 @@
             app:layout_constraintEnd_toStartOf="@id/buttonLanguage"
             app:layout_constraintTop_toTopOf="@id/imageLogo" />
 
+        <!-- Lifecycle log toggle (">_"): filled white while the log is on.
+             Look and description are set in HomeActivity. -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonLog"
+            style="@style/Widget.GMI.Button.Header.Icon"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:contentDescription="@string/cd_log_show"
+            app:icon="@drawable/ic_terminal"
+            app:layout_constraintBottom_toBottomOf="@id/imageLogo"
+            app:layout_constraintEnd_toStartOf="@id/buttonTheme"
+            app:layout_constraintTop_toTopOf="@id/imageLogo" />
+
         <TextView
             android:id="@+id/textGreeting"
             android:layout_width="wrap_content"

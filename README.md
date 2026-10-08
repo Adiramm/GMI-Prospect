@@ -39,6 +39,8 @@ rotated, backgrounded or switched between themes and languages.
   screen, and Submit opens the email app with everything filled in.
 - **About Us / Contact Us**: call, email, website and map, opened through implicit Intents.
 - **Light / dark mode** and **English / Bahasa Melayu**, switchable from Home and remembered between launches.
+- **Lifecycle log**: an optional on-screen panel (the `>_` button on Home) that shows every lifecycle callback as it
+  happens, so you can demo the lifecycle without Android Studio.
 
 ## The Activity lifecycle in this app
 
@@ -54,6 +56,15 @@ HomeActivity → onCreate
 HomeActivity → onStart
 HomeActivity → onResume
 ```
+
+**On-screen lifecycle log.** Tap the `>_` button on Home to dock a log panel under every screen. It shows the same
+lines as Logcat, with timestamps, and the newest line flashes red. Collapse it to one line or clear it before each
+demo step. It's off by default, the choice is remembered, and it only updates while its screen is visible
+(`onStart` / `onStop`).
+
+| Leaving and returning during the splash | Switching to dark mode on Home |
+|:---:|:---:|
+| <img src="docs/screenshots/lifecycle_log_splash.png" width="240" alt="Splash with the lifecycle log showing onRestart and the timer restarting"> | <img src="docs/screenshots/lifecycle_log_theme.png" width="240" alt="Home in dark mode with the log showing onDestroy and onCreate"> |
 
 | # | Requirement | Where |
 |---|---|---|
@@ -79,11 +90,13 @@ HomeActivity → onResume
 ```
 app/src/main/java/com/gmi/prospect
 ├─ GmiApp.java              Application class: applies the saved light/dark mode
-├─ base/BaseActivity.java   Lifecycle logging + shared helpers
+├─ base/BaseActivity.java   Lifecycle logging, the log panel under every screen, shared helpers
+├─ base/LifecycleLog.java   The log itself: Logcat + an in-memory list for the on-screen panel
 ├─ ui/                      The 10 Activities (Splash, Home, CourseList, CourseDetail, GradeInput,
 │                           Quiz, Result, AdmissionForm, About, Contact)
 ├─ ui/adapter/              CourseAdapter, ResultAdapter
-├─ ui/view/                 ConfettiView, SwitchOverlayView (theme/language switch animation)
+├─ ui/view/                 ConfettiView, SwitchOverlayView (theme/language switch animation),
+│                           LifecycleLogView (the on-screen log panel)
 ├─ data/                    Course, Subject, Grade, enums, Course/Subject/Quiz repositories
 └─ logic/                   EligibilityChecker, EligibilityResult, CourseRanker
 ```
@@ -126,3 +139,4 @@ The Gradle daemon needs JDK 21. Android Studio's bundled JDK works: point `JAVA_
 - **Press Home** while confetti is falling: it pauses, and continues when you come back.
 - **Leave the Admission Form** half filled in and open it again: "Draft restored".
 - **Switch theme or language** on Home and watch Logcat as the Activity is destroyed and re-created.
+- Or turn on the **`>_` lifecycle log** on Home and watch all of the above on the phone itself.

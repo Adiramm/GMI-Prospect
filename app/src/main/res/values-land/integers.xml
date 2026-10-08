@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Landscape: only 3 log lines, so the screen above keeps enough room.
+         Android picks this file automatically after rotation (that is one
+         reason why rotation re-creates the Activity). -->
+    <integer name="log_visible_lines">3</integer>
+</resources>

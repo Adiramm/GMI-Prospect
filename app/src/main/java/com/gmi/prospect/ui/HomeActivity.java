@@ -1,6 +1,7 @@
 package com.gmi.prospect.ui;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.os.LocaleListCompat;
 import androidx.core.view.ViewCompat;
@@ -17,12 +19,14 @@ import androidx.core.view.WindowInsetsCompat;
 import com.gmi.prospect.GmiApp;
 import com.gmi.prospect.R;
 import com.gmi.prospect.base.BaseActivity;
+import com.gmi.prospect.base.LifecycleLog;
 import com.gmi.prospect.ui.view.SwitchOverlayView;
 import com.google.android.material.button.MaterialButton;
 
 /**
- * Main menu: gradient header with theme and language toggles, plus a 2x2 grid
- * of cards (Courses, Check Eligibility, About Us, Contact Us).
+ * Main menu: gradient header with the lifecycle log, theme and language
+ * toggles, plus a 2x2 grid of cards (Courses, Check Eligibility, About Us,
+ * Contact Us).
  * <p>
  * Both toggles RECREATE the Activity (onPause → onStop → onSaveInstanceState →
  * onDestroy → onCreate → onStart → onResume) - watch it in Logcat. The switch
@@ -48,6 +52,7 @@ public class HomeActivity extends BaseActivity {
         useWhiteSystemBarIcons(false);
         applyWindowInsets();
 
+        setupLogToggle();
         setupThemeToggle();
         setupLanguageToggle();
         setupCards();
@@ -62,6 +67,35 @@ public class HomeActivity extends BaseActivity {
                     findViewById(R.id.row1),
                     findViewById(R.id.row2));
         }
+    }
+
+    // ---------------------------------------------------------------------
+    // Lifecycle log (">_" button)
+    // ---------------------------------------------------------------------
+
+    /**
+     * Switches the on-screen lifecycle log on or off. The choice is saved, and
+     * every screen shows or hides the panel in its onStart. No recreation is
+     * needed: this screen updates its own panel straight away.
+     */
+    private void setupLogToggle() {
+        MaterialButton buttonLog = findViewById(R.id.buttonLog);
+        showLogToggleState(buttonLog);
+        buttonLog.setOnClickListener(v -> {
+            LifecycleLog.setPanelOn(this, !LifecycleLog.isPanelOn(this));
+            showLogToggleState(buttonLog);
+            refreshLogPanel();
+        });
+    }
+
+    /** On = solid white circle with a blue icon; off = the see-through header style. */
+    private void showLogToggleState(MaterialButton buttonLog) {
+        boolean on = LifecycleLog.isPanelOn(this);
+        buttonLog.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this,
+                on ? R.color.white : R.color.header_overlay)));
+        buttonLog.setIconTint(ColorStateList.valueOf(ContextCompat.getColor(this,
+                on ? R.color.blue_500 : R.color.on_header)));
+        buttonLog.setContentDescription(getString(on ? R.string.cd_log_hide : R.string.cd_log_show));
     }
 
     // ---------------------------------------------------------------------

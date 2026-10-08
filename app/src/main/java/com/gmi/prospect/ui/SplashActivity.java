@@ -5,12 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 
 import androidx.lifecycle.Lifecycle;
 
 import com.gmi.prospect.R;
 import com.gmi.prospect.base.BaseActivity;
+import com.gmi.prospect.base.LifecycleLog;
 
 /**
  * Launcher screen: GMI logo + greeting on the blue gradient.
@@ -66,7 +66,7 @@ public class SplashActivity extends BaseActivity {
     protected void onStart() {
         super.onStart();
         handler.postDelayed(timerRunnable, SPLASH_DELAY_MS);
-        Log.d(TAG, "SplashActivity: timer started (" + SPLASH_DELAY_MS + " ms)");
+        LifecycleLog.d("SplashActivity: timer started (" + SPLASH_DELAY_MS + " ms)");
     }
 
     // Screen is no longer visible: cancel the pending timer so Home is never
@@ -75,7 +75,7 @@ public class SplashActivity extends BaseActivity {
     protected void onStop() {
         super.onStop();
         handler.removeCallbacks(timerRunnable);
-        Log.d(TAG, "SplashActivity: timer cancelled");
+        LifecycleLog.d("SplashActivity: timer cancelled");
     }
 
     /**
@@ -92,7 +92,7 @@ public class SplashActivity extends BaseActivity {
         if (getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.RESUMED)) {
             openHome();
         } else {
-            Log.d(TAG, "SplashActivity: timer fired while paused - not opening Home");
+            LifecycleLog.d("SplashActivity: timer fired while paused - not opening Home");
             handler.postDelayed(timerRunnable, RETRY_MS);
         }
     }

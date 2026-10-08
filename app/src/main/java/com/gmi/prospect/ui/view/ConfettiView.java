@@ -5,7 +5,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.os.SystemClock;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -13,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 
 import com.gmi.prospect.R;
+import com.gmi.prospect.base.LifecycleLog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +36,6 @@ import java.util.Random;
  */
 public class ConfettiView extends View {
 
-    private static final String TAG = "LIFECYCLE";
 
     private static final long DURATION_MS = 3000;
     private static final long FADE_MS = 600;
@@ -100,7 +99,7 @@ public class ConfettiView extends View {
         }
         running = true;
         lastFrameMs = 0;
-        Log.d(TAG, "ConfettiView → start (animating)");
+        LifecycleLog.d("ConfettiView → start (animating)");
         postInvalidateOnAnimation();
     }
 
@@ -110,7 +109,7 @@ public class ConfettiView extends View {
             return;
         }
         running = false;
-        Log.d(TAG, "ConfettiView → stop (paused at " + elapsedMs + " ms)");
+        LifecycleLog.d("ConfettiView → stop (paused at " + elapsedMs + " ms)");
     }
 
     // Safety net: never keep animating a view that is no longer on screen.
@@ -148,7 +147,7 @@ public class ConfettiView extends View {
             if (elapsedMs >= DURATION_MS) {
                 particles.clear();
                 running = false;
-                Log.d(TAG, "ConfettiView → finished");
+                LifecycleLog.d("ConfettiView → finished");
             } else {
                 postInvalidateOnAnimation(); // ask for the next frame
             }

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    On-screen lifecycle log, docked under every screen when switched on (Home →
+    ">_" button). BaseActivity adds it below the screen's own layout, so the
+    screen gets shorter instead of being covered. Dark in both themes on purpose:
+    it is a developer tool, not part of the app.
+-->
+<com.gmi.prospect.ui.view.LifecycleLogView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/log_background"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/spacing_small"
+    android:visibility="gone"
+    tools:visibility="visible">
+
+    <!-- Thin blue line separating the log from the screen above -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/log_divider" />
+
+    <!-- Header: icon, title, clear, collapse/expand -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/spacing_medium"
+        android:paddingEnd="4dp">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_terminal"
+            app:tint="@color/log_muted" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:layout_weight="1"
+            android:text="@string/log_title"
+            android:textAppearance="@style/TextAppearance.GMI.Log.Title" />
+
+        <ImageButton
+            android:id="@+id/buttonLogClear"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/cd_log_clear"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_delete"
+            app:tint="@color/log_muted" />
+
+        <ImageButton
+            android:id="@+id/buttonLogToggle"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/cd_log_collapse"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_expand_more"
+            app:tint="@color/log_muted" />
+    </LinearLayout>
+
+    <!-- The lines. Its height is set in LifecycleLogView (6 lines, 3 in landscape, or 1).
+         The fading edge softens the top line when older lines are scrolled away. -->
+    <ScrollView
+        android:id="@+id/scrollLog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fadingEdgeLength="24dp"
+        android:paddingStart="@dimen/spacing_medium"
+        android:paddingEnd="@dimen/spacing_medium"
+        android:requiresFadingEdge="vertical"
+        android:scrollbars="none">
+
+        <TextView
+            android:id="@+id/textLog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.GMI.Log"
+            tools:text="05:31.204  HomeActivity → onResume" />
+    </ScrollView>
+</com.gmi.prospect.ui.view.LifecycleLogView>

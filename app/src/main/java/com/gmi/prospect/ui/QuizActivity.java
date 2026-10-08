@@ -3,7 +3,6 @@ package com.gmi.prospect.ui;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -11,6 +10,7 @@ import androidx.annotation.NonNull;
 
 import com.gmi.prospect.R;
 import com.gmi.prospect.base.BaseActivity;
+import com.gmi.prospect.base.LifecycleLog;
 import com.gmi.prospect.data.QuizQuestion;
 import com.gmi.prospect.data.QuizRepository;
 import com.gmi.prospect.logic.CourseRanker;
@@ -80,7 +80,7 @@ public class QuizActivity extends BaseActivity {
             if (saved != null && saved.length == answers.length) {
                 answers = saved;
             }
-            Log.d(TAG, "QuizActivity restored question " + (currentIndex + 1)
+            LifecycleLog.d("QuizActivity restored question " + (currentIndex + 1)
                     + ", answers " + Arrays.toString(answers));
         }
 
@@ -229,7 +229,7 @@ public class QuizActivity extends BaseActivity {
      */
     private void openResults() {
         int[] scores = CourseRanker.scoreAnswers(answers);
-        Log.d(TAG, "QuizActivity scores (ELEC, MECH, DESIGN, IT): " + Arrays.toString(scores));
+        LifecycleLog.d("QuizActivity scores (ELEC, MECH, DESIGN, IT): " + Arrays.toString(scores));
 
         Intent intent = new Intent(this, ResultActivity.class);
         intent.putExtras(getIntent()); // grades + course ID from GradeInputActivity

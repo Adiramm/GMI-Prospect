@@ -1,38 +1,46 @@
 package com.gmi.prospect.base;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.LayoutRes;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
 import com.gmi.prospect.R;
+import com.gmi.prospect.ui.view.LifecycleLogView;
 import com.google.android.material.appbar.MaterialToolbar;
 
 /**
  * Parent of every screen in the app.
  * <p>
  * It overrides each Activity lifecycle callback and logs it, so we can watch
- * the lifecycle in Logcat (filter by tag {@code LIFECYCLE}). Child Activities
- * override the same methods to do their own work, and must always call
- * {@code super.onXxx()} so the log line still appears.
+ * the lifecycle in Logcat (filter by tag {@code LIFECYCLE}) and in the
+ * on-screen log panel. Child Activities override the same methods to do their
+ * own work, and must always call {@code super.onXxx()} so the log line still appears.
+ * <p>
+ * It also adds the lifecycle log panel under every screen (see
+ * {@link #setContentView(int)}); the panel is only shown when switched on in Home.
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
-    /** Logcat tag used for all lifecycle messages. */
-    protected static final String TAG = "LIFECYCLE";
+    /** Panel under the screen (null until setContentView has been called). */
+    private LifecycleLogView logPanel;
 
     /** Writes one lifecycle line, e.g. "HomeActivity → onResume". */
     private void logLifecycle(String callback) {
-        Log.d(TAG, getClass().getSimpleName() + " → " + callback);
+        LifecycleLog.d(getClass().getSimpleName() + " → " + callback);
     }
 
     // Called once when the Activity is created (or re-created after rotation /
@@ -51,10 +59,13 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     // The Activity is about to become visible. Good place to start work that
     // only matters while the user can see the screen (e.g. the Splash timer).
+    // Also the moment the log panel starts following new lines (and is shown
+    // or hidden to match the setting), because the screen is now visible.
     @Override
     protected void onStart() {
         super.onStart();
         logLifecycle("onStart");
+        refreshLogPanel();
     }
 
     // Called only when coming back from the stopped state (e.g. returning from
@@ -84,10 +95,14 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     // The Activity is no longer visible. Stop timers and other background work
     // so the app never does anything the user cannot see.
+    // The log panel stops following new lines too: nobody can see it.
     @Override
     protected void onStop() {
         super.onStop();
         logLifecycle("onStop");
+        if (logPanel != null) {
+            logPanel.stopListening();
+        }
     }
 
     // Called before the Activity may be destroyed and re-created (rotation,
@@ -105,6 +120,68 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         logLifecycle("onDestroy");
+    }
+
+    // ---------------------------------------------------------------------
+    // Lifecycle log panel
+    // ---------------------------------------------------------------------
+
+    /**
+     * Every screen calls this with its layout. We put that layout in a column
+     * with the log panel underneath: when the panel is shown, the screen just
+     * gets shorter, so the panel never covers a button.
+     */
+    @Override
+    public void setContentView(@LayoutRes int layoutResID) {
+        LinearLayout column = new LinearLayout(this);
+        column.setOrientation(LinearLayout.VERTICAL);
+        View screen = getLayoutInflater().inflate(layoutResID, column, false);
+        column.addView(screen, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, 0, 1f));
+        logPanel = (LifecycleLogView) getLayoutInflater()
+                .inflate(R.layout.view_lifecycle_log, column, false);
+        column.addView(logPanel);
+        super.setContentView(column);
+        applyLogPanelInsets(column, screen);
+    }
+
+    /**
+     * Shows or hides the panel to match the setting and (re)starts it. Called
+     * in onStart, and by Home right after its ">_" button is tapped.
+     */
+    protected void refreshLogPanel() {
+        if (logPanel == null) {
+            return;
+        }
+        boolean on = LifecycleLog.isPanelOn(this);
+        logPanel.setVisibility(on ? View.VISIBLE : View.GONE);
+        if (on) {
+            logPanel.startListening();
+        } else {
+            logPanel.stopListening();
+        }
+        ViewCompat.requestApplyInsets(logPanel.getRootView());
+    }
+
+    /**
+     * Edge-to-edge: the navigation bar is at the very bottom. While the panel
+     * is shown, the PANEL makes room for it and the screen above is told there
+     * is no navigation bar - otherwise there would be an empty gap between them.
+     */
+    private void applyLogPanelInsets(View column, View screen) {
+        ViewCompat.setOnApplyWindowInsetsListener(column, (v, insets) -> {
+            WindowInsetsCompat forScreen = insets;
+            if (logPanel.getVisibility() == View.VISIBLE) {
+                Insets bars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+                logPanel.setBottomInset(bars.bottom);
+                forScreen = new WindowInsetsCompat.Builder(insets)
+                        .setInsets(WindowInsetsCompat.Type.systemBars(),
+                                Insets.of(bars.left, bars.top, bars.right, 0))
+                        .build();
+            }
+            ViewCompat.dispatchApplyWindowInsets(screen, forScreen);
+            return WindowInsetsCompat.CONSUMED;
+        });
     }
 
     // ---------------------------------------------------------------------

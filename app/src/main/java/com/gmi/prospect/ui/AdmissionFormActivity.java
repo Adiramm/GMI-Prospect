@@ -10,7 +10,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +25,7 @@ import androidx.core.content.IntentCompat;
 
 import com.gmi.prospect.R;
 import com.gmi.prospect.base.BaseActivity;
+import com.gmi.prospect.base.LifecycleLog;
 import com.gmi.prospect.data.Course;
 import com.gmi.prospect.data.CourseRepository;
 import com.gmi.prospect.data.Subject;
@@ -207,7 +207,7 @@ public class AdmissionFormActivity extends BaseActivity {
             return;
         }
         editor.apply(); // apply() writes in the background - no delay when leaving
-        Log.d(TAG, "AdmissionFormActivity draft saved");
+        LifecycleLog.d("AdmissionFormActivity draft saved");
     }
 
     /**
@@ -228,7 +228,7 @@ public class AdmissionFormActivity extends BaseActivity {
                 changed = true;
             }
         }
-        Log.d(TAG, "AdmissionFormActivity draft " + (changed ? "restored" : "unchanged"));
+        LifecycleLog.d("AdmissionFormActivity draft " + (changed ? "restored" : "unchanged"));
         if (changed) {
             Snackbar.make(findViewById(R.id.buttonSubmit), R.string.draft_restored, Snackbar.LENGTH_LONG)
                     .setAnchorView(R.id.buttonSubmit)
@@ -239,7 +239,7 @@ public class AdmissionFormActivity extends BaseActivity {
 
     private void clearDraft() {
         draftPrefs().edit().clear().apply();
-        Log.d(TAG, "AdmissionFormActivity draft cleared");
+        LifecycleLog.d("AdmissionFormActivity draft cleared");
     }
 
     /** "Clear" on the Snackbar: empty fields + no draft. */

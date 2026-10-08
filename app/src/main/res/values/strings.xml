@@ -25,6 +25,15 @@
     <string name="cd_switch_to_light">Switch to light mode</string>
     <string name="cd_toggle_language">Switch to Bahasa Melayu</string>
 
+    <!-- ========== Lifecycle log panel (developer view) ========== -->
+    <string name="log_title">Lifecycle log</string>
+    <string name="log_empty">Nothing logged yet</string>
+    <string name="cd_log_show">Show lifecycle log</string>
+    <string name="cd_log_hide">Hide lifecycle log</string>
+    <string name="cd_log_clear">Clear lifecycle log</string>
+    <string name="cd_log_collapse">Show only the newest line</string>
+    <string name="cd_log_expand">Show more lines</string>
+
     <!-- ========== Splash ========== -->
     <string name="splash_greeting">Hey there 👋</string>
     <string name="splash_subtitle">Let\'s find your path at GMI</string>

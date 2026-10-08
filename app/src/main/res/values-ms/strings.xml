@@ -23,6 +23,15 @@
     <string name="cd_switch_to_light">Tukar ke mod cerah</string>
     <string name="cd_toggle_language">Tukar ke Bahasa Inggeris</string>
 
+    <!-- ========== Panel log kitaran hayat ========== -->
+    <string name="log_title">Log kitaran hayat</string>
+    <string name="log_empty">Belum ada log</string>
+    <string name="cd_log_show">Tunjuk log kitaran hayat</string>
+    <string name="cd_log_hide">Sembunyi log kitaran hayat</string>
+    <string name="cd_log_clear">Kosongkan log kitaran hayat</string>
+    <string name="cd_log_collapse">Tunjuk baris terbaru sahaja</string>
+    <string name="cd_log_expand">Tunjuk lebih banyak baris</string>
+
     <!-- ========== Splash ========== -->
     <string name="splash_greeting">Hai! 👋</string>
     <string name="splash_subtitle">Jom cari laluan anda di GMI</string>

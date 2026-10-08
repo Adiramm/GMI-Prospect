@@ -2,13 +2,13 @@ package com.gmi.prospect.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.gmi.prospect.R;
 import com.gmi.prospect.base.BaseActivity;
+import com.gmi.prospect.base.LifecycleLog;
 import com.gmi.prospect.data.Course;
 import com.gmi.prospect.data.CourseRepository;
 import com.gmi.prospect.data.Faculty;
@@ -52,7 +52,7 @@ public class CourseListActivity extends BaseActivity {
         int selectedTab = 0; // fresh start → Diploma
         if (savedInstanceState != null) {
             selectedTab = savedInstanceState.getInt(KEY_SELECTED_TAB, 0);
-            Log.d(TAG, "CourseListActivity restored tab " + selectedTab);
+            LifecycleLog.d("CourseListActivity restored tab " + selectedTab);
         }
         setupTabs(selectedTab);
     }

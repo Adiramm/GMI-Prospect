@@ -75,6 +75,23 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <!-- Lifecycle log lines: monospace like Logcat. "monospace" is the
+         system's built-in font, so no font file is needed. -->
+    <style name="TextAppearance.GMI.Log" parent="TextAppearance.Material3.BodySmall">
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/log_text</item>
+    </style>
+
+    <!-- "LIFECYCLE LOG" header above the lines -->
+    <style name="TextAppearance.GMI.Log.Title">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.08</item>
+        <item name="android:textColor">@color/log_muted</item>
+    </style>
+
     <!-- ========== Shapes ========== -->
 
     <!-- 20dp rounded corners for cards -->
