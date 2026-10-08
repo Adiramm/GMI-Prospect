@@ -27,6 +27,12 @@ rotated, backgrounded or switched between themes and languages.
 |:---:|:---:|:---:|:---:|
 | <img src="docs/screenshots/home_dark_bm.png" width="200" alt="Home in dark mode, Malay"> | <img src="docs/screenshots/result_not_eligible_dark_bm.png" width="200" alt="Not eligible result, Malay"> | <img src="docs/screenshots/about_dark_bm.png" width="200" alt="About Us, Malay"> | <img src="docs/screenshots/contact_dark_bm.png" width="200" alt="Contact Us, Malay"> |
 
+**Search, share and landscape quiz**
+
+| Course search | Share results | Quiz in landscape |
+|:---:|:---:|:---:|
+| <img src="docs/screenshots/feature_search.png" width="200" alt="Course list filtered by the word design"> | <img src="docs/screenshots/feature_share.png" width="200" alt="Share sheet with the top 5 courses"> | <img src="docs/screenshots/feature_quiz_landscape.png" width="400" alt="Quiz in landscape with a 2x2 answer grid"> |
+
 ## Features
 
 - **Courses**: 17 programmes (15 diplomas, GAPP, GUFP) in tabs, with diplomas grouped by faculty, and a search box
