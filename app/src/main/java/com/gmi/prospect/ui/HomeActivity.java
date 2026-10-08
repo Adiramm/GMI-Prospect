@@ -2,8 +2,11 @@ package com.gmi.prospect.ui;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Rect;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.graphics.Insets;
@@ -48,10 +51,12 @@ public class HomeActivity extends BaseActivity {
         setupThemeToggle();
         setupLanguageToggle();
         setupCards();
+        placeRedDot();
 
         if (savedInstanceState == null) {
             playEntranceAnimation(STAGGER_MS,
                     findViewById(R.id.textGreeting),
+                    findViewById(R.id.redDot),
                     findViewById(R.id.textSubtitle),
                     findViewById(R.id.textSectionTitle),
                     findViewById(R.id.row1),
@@ -127,6 +132,44 @@ public class HomeActivity extends BaseActivity {
     // ---------------------------------------------------------------------
     // Layout helpers
     // ---------------------------------------------------------------------
+
+    /**
+     * Moves the red dot so it sits just above the LAST letter of the greeting,
+     * like the dot on the "i" in the GMI logo. Both languages end with "GMI",
+     * so that letter is always the "I". It is recalculated after every layout,
+     * because where the text ends depends on the language and screen width.
+     */
+    private void placeRedDot() {
+        TextView greeting = findViewById(R.id.textGreeting);
+        View dot = findViewById(R.id.redDot);
+        int dotSize = dot.getLayoutParams().width;
+        float gap = 3 * getResources().getDisplayMetrics().density;
+
+        greeting.addOnLayoutChangeListener((v, left, top, right, bottom,
+                                            oldLeft, oldTop, oldRight, oldBottom) -> {
+            Layout layout = greeting.getLayout();
+            CharSequence text = greeting.getText();
+            if (layout == null || text.length() == 0) {
+                return;
+            }
+            int last = text.length() - 1;
+            int line = layout.getLineForOffset(last);
+
+            // Centre of the last letter, measured from the greeting's left edge
+            float letterLeft = layout.getPrimaryHorizontal(last);
+            float letterWidth = greeting.getPaint().measureText(text, last, last + 1);
+            float centerX = greeting.getPaddingLeft() + letterLeft + letterWidth / 2f;
+
+            // Top of the capital letters on that line (bounds.top is above the baseline, so negative)
+            Rect bounds = new Rect();
+            greeting.getPaint().getTextBounds("I", 0, 1, bounds);
+            float capTop = greeting.getPaddingTop() + layout.getLineBaseline(line) + bounds.top;
+
+            // The dot's XML position is the greeting's top-left corner; shift it from there
+            dot.setTranslationX(centerX - dotSize / 2f);
+            dot.setTranslationY(capTop - gap - dotSize);
+        });
+    }
 
     /**
      * Edge-to-edge: the gradient goes behind the status bar, so we push the

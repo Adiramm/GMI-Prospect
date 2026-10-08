@@ -76,15 +76,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imageLogo" />
 
-        <!-- Red dot motif: echoes the dot on the logo's "i" -->
+        <!-- Red dot motif: echoes the dot on the logo's "i". It starts at the
+             greeting's top-left corner; HomeActivity.placeRedDot() then moves it
+             above the last letter ("GMI" → the "I"), wherever the text ends. -->
         <View
             android:id="@+id/redDot"
             android:layout_width="10dp"
             android:layout_height="10dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="6dp"
             android:background="@drawable/shape_red_dot"
-            app:layout_constraintStart_toEndOf="@id/textGreeting"
+            app:layout_constraintStart_toStartOf="@id/textGreeting"
             app:layout_constraintTop_toTopOf="@id/textGreeting" />
 
         <TextView
