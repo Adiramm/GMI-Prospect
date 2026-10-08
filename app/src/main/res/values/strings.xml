@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!--
         ENGLISH strings (default). Every string here must also exist in
         values-ms/strings.xml (Bahasa Melayu).
@@ -16,10 +16,7 @@
     <string name="action_back">Back</string>
     <string name="action_home">Home</string>
     <string name="action_submit">Submit</string>
-    <string name="action_cancel">Cancel</string>
-    <string name="action_ok">OK</string>
     <string name="action_apply">Apply</string>
-    <string name="action_close">Close</string>
 
     <!-- Content descriptions (read by screen readers) -->
     <string name="cd_navigate_up">Navigate up</string>
@@ -49,8 +46,34 @@
     <string name="title_about">About Us</string>
     <string name="title_contact">Contact Us</string>
 
-    <!-- Placeholder screens (replaced in later phases) -->
-    <string name="placeholder_coming_soon">Coming soon — this screen is built in a later phase.</string>
+    <!-- ========== About Us ========== -->
+    <string name="about_hero_title" translatable="false">German-Malaysian Institute</string>
+    <string name="about_hero_subtitle">Kajang, Selangor · Since 1992</string>
+    <string name="about_who_title">Who we are</string>
+    <!-- TODO verify: draft About text from the project spec, team to confirm with GMI -->
+    <string name="about_intro">The German-Malaysian Institute (GMI) in Kajang, Selangor, was set up in 1992 through cooperation between the governments of Malaysia and Germany.\n\nGMI trains future engineers and technologists using a German-style, hands-on approach — small classes, industry-standard workshops and strong links with industry. Programmes range from engineering technology diplomas to pre-university pathways to universities in Germany (GAPP) and UTP (GUFP).</string>
+    <string name="about_facts_title">Key facts</string>
+    <string name="about_fact_founded_value" translatable="false">1992</string>
+    <string name="about_fact_founded_label">Year founded</string>
+    <string name="about_fact_partnership_value">2 nations</string>
+    <string name="about_fact_partnership_label">Malaysia–Germany government partnership</string>
+    <!-- The value (number of programmes) is counted in AboutActivity -->
+    <string name="about_fact_programmes_label">Programmes on offer: Diploma, GAPP &amp; GUFP</string>
+    <string name="about_fact_handson_value">Hands-on</string>
+    <string name="about_fact_handson_label">German-style training in industry-standard workshops</string>
+
+    <!-- ========== Contact Us ========== -->
+    <string name="contact_intro">Questions about courses or admission? Our team is happy to help.</string>
+    <string name="contact_call_title">Call us</string>
+    <string name="contact_phone" translatable="false">+603-8921 9000</string>
+    <string name="contact_email_title">Email</string>
+    <string name="contact_email" translatable="false">marketing@gmi.edu.my</string>
+    <string name="contact_email_subject">Enquiry about GMI programmes</string>
+    <string name="contact_website_title">Website</string>
+    <string name="contact_website" translatable="false">www.gmi.edu.my</string>
+    <string name="contact_location_title">Location</string>
+    <string name="contact_address" translatable="false">German-Malaysian Institute, Jalan Ilmiah, Taman Universiti, 43000 Kajang, Selangor</string>
+    <string name="contact_no_app">No app on this phone can open that.</string>
 
     <!-- ========== Course list & detail ========== -->
     <string name="title_course_detail">Course Details</string>
@@ -120,9 +143,9 @@
     <string name="form_details_title">Your details</string>
     <string name="form_name">Full name (as in IC)</string>
     <string name="form_ic">IC number</string>
-    <string name="form_ic_helper">12 digits, e.g. 070312-10-1234</string>
+    <string name="form_ic_helper" tools:ignore="TypographyDashes">12 digits, e.g. 070312-10-1234</string>
     <string name="form_phone">Phone number</string>
-    <string name="form_phone_helper">e.g. 012-345 6789</string>
+    <string name="form_phone_helper" tools:ignore="TypographyDashes">e.g. 012-345 6789</string>
     <string name="form_email">Email</string>
     <string name="form_address">Home address</string>
 

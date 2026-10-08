@@ -1,5 +1,6 @@
 package com.gmi.prospect.ui;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,7 +20,12 @@ import com.gmi.prospect.base.BaseActivity;
  * lifecycle: started in onStart, cancelled in onStop, and it only navigates
  * while the screen is resumed - so the app never jumps to Home while the user
  * is leaving or in the background.
+ * <p>
+ * Lint suggests using only the system splash screen (Android 12+). We keep this
+ * Activity on purpose: the assignment's lifecycle rule #4 is demonstrated here.
+ * The system splash is still set up in themes.xml, so it shows first on a cold start.
  */
+@SuppressLint("CustomSplashScreen")
 public class SplashActivity extends BaseActivity {
 
     /** How long the splash stays before opening Home automatically. */

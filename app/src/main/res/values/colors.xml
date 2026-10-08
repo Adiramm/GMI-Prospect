@@ -3,9 +3,10 @@
     GMI colour palette, taken from the GMI logo (blue #1007A0, red #EF3240).
     Themes map these raw colours to Material roles; layouts should use theme
     attributes (?attr/colorPrimary, ...) instead of these names where possible.
+    The FULL 50-900 scales are kept on purpose (project spec), so lint's
+    "unused resource" warning is switched off for this file.
 -->
-<resources>
-    <color name="black">#FF000000</color>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="UnusedResources">
     <color name="white">#FFFFFFFF</color>
 
     <!-- GMI Blue: main brand colour -->

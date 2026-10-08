@@ -3,9 +3,14 @@
     Viewport keeps the SVG's 1024 x 724 coordinates; the dp size keeps the same
     aspect ratio (≈1.41 : 1). Resize it with layout_width/height in layouts.
     Blue letters "GMI" + red dot (the "i" dot), colours from colors.xml.
+    Every screen shows the logo on the blue gradient, so layouts use
+    gmi_logo_light (white letters). This original-colour version is the master
+    copy required by the project spec, hence tools:ignore="UnusedResources".
 -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:width="144dp"
+    tools:ignore="UnusedResources"
     android:height="102dp"
     android:viewportWidth="1024"
     android:viewportHeight="724">

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    One "key fact" card on the About Us screen: a big value ("1992") above a
+    short label ("Year founded"). Included 4 times in activity_about.xml;
+    AboutActivity fills in the text.
+-->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textFactValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.GMI.Headline"
+            android:textColor="?attr/colorPrimary"
+            tools:text="1992" />
+
+        <TextView
+            android:id="@+id/textFactLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textAppearance="@style/TextAppearance.GMI.Label"
+            tools:text="@string/about_fact_founded_label" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    About Us: gradient hero card (logo + name), a short intro and a
+    2x2 grid of key-fact cards (item_about_fact.xml, filled by AboutActivity).
+    fitsSystemWindows pads the screen away from the status/navigation bars.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context=".ui.AboutActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        style="@style/Widget.GMI.Toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/screen_padding"
+            android:paddingTop="@dimen/spacing_small"
+            android:paddingEnd="@dimen/screen_padding"
+            android:paddingBottom="@dimen/spacing_large">
+
+            <!-- ===== Hero card: GMI gradient + logo + red dot ===== -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/heroCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_about_hero"
+                android:padding="@dimen/screen_padding">
+
+                <ImageView
+                    android:id="@+id/imageLogo"
+                    android:layout_width="62dp"
+                    android:layout_height="44dp"
+                    android:contentDescription="@string/cd_gmi_logo"
+                    android:src="@drawable/gmi_logo_light"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!-- No extra red dot here: the logo's own red "i" dot sits right above -->
+                <TextView
+                    android:id="@+id/textHeroTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:text="@string/about_hero_title"
+                    android:textAppearance="@style/TextAppearance.GMI.Headline"
+                    android:textColor="@color/on_header"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imageLogo" />
+
+                <TextView
+                    android:id="@+id/textHeroSubtitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/about_hero_subtitle"
+                    android:textAppearance="@style/TextAppearance.GMI.Body"
+                    android:textColor="@color/on_header_variant"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textHeroTitle" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- ===== Intro ===== -->
+            <LinearLayout
+                android:id="@+id/sectionIntro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:text="@string/about_who_title"
+                    android:textAppearance="@style/TextAppearance.GMI.Title" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:lineSpacingExtra="3dp"
+                    android:text="@string/about_intro"
+                    android:textAppearance="@style/TextAppearance.GMI.Body" />
+            </LinearLayout>
+
+            <!-- ===== Key facts (2x2 grid) ===== -->
+            <TextView
+                android:id="@+id/textFactsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:text="@string/about_facts_title"
+                android:textAppearance="@style/TextAppearance.GMI.Title" />
+
+            <LinearLayout
+                android:id="@+id/rowFacts1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <include
+                    android:id="@+id/factFounded"
+                    layout="@layout/item_about_fact"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1" />
+
+                <include
+                    android:id="@+id/factPartnership"
+                    layout="@layout/item_about_fact"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rowFacts2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <include
+                    android:id="@+id/factProgrammes"
+                    layout="@layout/item_about_fact"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1" />
+
+                <include
+                    android:id="@+id/factHandsOn"
+                    layout="@layout/item_about_fact"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

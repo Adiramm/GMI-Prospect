@@ -3,6 +3,7 @@ package com.gmi.prospect.ui.view;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -34,6 +35,8 @@ import androidx.annotation.Nullable;
  *         {@link #STYLE_FADE} = cross-fade (language).</li>
  * </ol>
  */
+// Only ever created in code (never from XML), so it has no XML-style constructor.
+@SuppressLint("ViewConstructor")
 public class SwitchOverlayView extends View {
 
     /** New screen grows out of the tapped button as a circle. */
