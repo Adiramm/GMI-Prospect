@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -172,7 +170,7 @@ public class CourseListActivity extends BaseActivity {
         return editSearch.getText() == null ? "" : editSearch.getText().toString().trim();
     }
 
-    /** Re-filters while typing; the keyboard's search key just closes the keyboard. */
+    /** Re-filters while typing (the keyboard's Done key closes itself: actionDone). */
     private void setupSearch() {
         editSearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -190,15 +188,6 @@ public class CourseListActivity extends BaseActivity {
                 // Same text on every tab: switching tab keeps the filter
                 showLevel(Level.values()[tabLevels.getSelectedTabPosition()]);
             }
-        });
-        editSearch.setOnEditorActionListener((v, actionId, event) -> {
-            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                InputMethodManager keyboard = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-                keyboard.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                v.clearFocus();
-                return true;
-            }
-            return false;
         });
     }
 
