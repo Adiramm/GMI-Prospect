@@ -10,9 +10,8 @@ import java.util.List;
  * Which entry-requirement rule applies to a course, and WHAT that rule needs.
  * <p>
  * This enum is the single source of truth for entry requirements: the course
- * detail screen turns it into a bullet list, and EligibilityChecker (later
- * phase) checks grades against the same data. Change a rule here and both
- * update together.
+ * detail screen turns it into a bullet list, and EligibilityChecker checks
+ * grades against the same data. Change a rule here and both update together.
  */
 public enum RuleType {
 
